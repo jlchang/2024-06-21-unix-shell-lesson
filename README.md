@@ -1,7 +1,8 @@
 # Computing Basics series: Unix Shell
+
 ### Lesson GitHub repository
 
-This lesson is based on [Data Carpentry][dc-site]'s [Introduction to the Command Line for Genomics][dc-shell] and [Library Carpentry][lc-site]'s [The Unix Shell][lc-shell]. Please see <FIXME: URL placeholder> for a rendered version of this material.
+This lesson is based on [Data Carpentry][dc-site]'s [Introduction to the Command Line for Genomics][dc-shell] and [Library Carpentry][lc-site]'s [The Unix Shell][lc-shell]. Please see <https://jlchang.github.io/2024-06-21-unix-shell-lesson/> for a rendered version of this material.
 
 ## Maintainers for Computing Basics series: Unix Shell
 
@@ -22,7 +23,7 @@ license](https://creativecommons.org/licenses/by/4.0/).
 
 Jean Chang, Amelia Hall, Sohpie Webster, et al.<p>
 Computing Basics series: Unix Shell.<p>
-<FIXME: URL placeholder>
+<https://jlchang.github.io/2024-06-21-unix-shell-lesson/>
 
 ## Checking and Previewing the Lesson
 
