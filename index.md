@@ -17,9 +17,7 @@ There are several reasons to learn how to use the CLI:
 ## Getting Started
 
 This lesson assumes no prior experience with the tools covered in the workshop.
-However, learners are expected to have some familiarity with biological concepts,
-including the
-concept of genomic variation within a population. Participants should bring their laptops and plan to participate actively.
+However, learners are expected to have some familiarity with biological concepts. Participants should bring their laptops and plan to participate actively.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
