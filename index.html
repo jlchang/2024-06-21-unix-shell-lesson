@@ -208,15 +208,6 @@
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
 
-<div class="accordion accordion-flush" id="accordionFlush8">
-  <div class="accordion-item">
-    <div class="accordion-header" id="flush-heading8">
-        <a href="next-episode.html">7. next-episode</a>
-    </div><!--/div.accordion-header-->
-        
-  </div><!--/div.accordion-item-->
-</div><!--/div.accordion-flush-->
-
                 </div>
               </div>
             </div>
@@ -298,8 +289,7 @@ the shell.</li>
 <div class="callout-content">
 <p>This lesson assumes no prior experience with the tools covered in the
 workshop. However, learners are expected to have some familiarity with
-biological concepts, including the concept of genomic variation within a
-population. Participants should bring their laptops and plan to
+biological concepts. Participants should bring their laptops and plan to
 participate actively.</p>
 </div>
 </div>
@@ -322,107 +312,254 @@ any links that you are not going to use.
  -->
 
 
-      <section id="setup"><p>To participate in this lesson, you will need a working Unix-like
+      <section id="setup"><div class="section level1">
+<h1 id="setup"><a name="#setup">Setup</a><a class="anchor" aria-label="anchor" href="#setup"></a></h1>
+<p>To participate in this lesson, you will need a working Unix-like
 shell environment. We will be using Bash (<a href="https://en.wikipedia.org/wiki/Bash_(Unix_shell)" class="external-link">Bourne Again
 Shell</a>) which is standard on Linux and macOS. Some macOS users
 (Catalina or later) will have zsh (Z shell) as their default version.
 Even if you are a Windows user, learning Bash will open up a powerful
 set of tools on your personal machine, and familiarize you with the
 standard remote interface used on most servers and supercomputers.</p>
-<div id="terminal-setup" class="callout prereq">
+<p>For the workshop, we will use the Broad’s <a href="https://intranet.broadinstitute.org/bits/service-catalog/scientific-computing/login-servers" class="external-link">login
+servers</a>. To access those machines, your laptop needs to be on the
+<strong>Broad-Internal</strong> wireless network when you are on-site OR
+on the Broad VPN if you have a non-Broad-issued computer or are
+off-site.</p>
+<div id="prereq1" class="callout prereq">
 <div class="callout-square">
 <i class="callout-icon" data-feather="check"></i>
 </div>
-<div id="terminal-setup" class="callout-inner">
-<h3 class="callout-title">Terminal Setup<a class="anchor" aria-label="anchor" href="#terminal-setup"></a>
+<div class="callout-inner">
+<h3 class="callout-title">Prerequisite<a class="anchor" aria-label="anchor" href="#prereq1"></a>
 </h3>
 <div class="callout-content">
+<div id="accordionSpoiler1" class="accordion spoiler-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
+  <h3 class="accordion-header" id="headingSpoiler1">
+<div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>Virtual Private Network (VPN) Access</h3>
+</button>
+<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
+<div class="accordion-body">
+<p>To reach to the Broad login servers when you are off-site, you will
+connect to the Broad VPN to access internal Broad resources.</p>
+<div class="section level4">
+<h4 id="vpn-installation"><a href="https://intranet.broadinstitute.org/bits/service-catalog/networking/vpn" class="external-link">VPN
+Installation</a><a class="anchor" aria-label="anchor" href="#vpn-installation"></a></h4>
+<ul><li>Use Broad Self Service (<a href="https://intranet.broadinstitute.org/bits/service-catalog/applications/self-service-software-mac" class="external-link">Mac</a>
+or <a href="https://intranet.broadinstitute.org/bits/service-catalog/applications/software-center-windows-self-service" class="external-link">Windows</a>)
+to install the <strong>Cisco AnyConnect Secure Mobility Client</strong>
+software
+<p>
+</p>
+<p>
+OR</p>
+</li>
+<li>Visit <a href="https://vpn.broadinstitute.org" class="external-link uri">https://vpn.broadinstitute.org</a> and follow the
+prompts.</li>
+</ul><p>You will also need to <a href="https://broad.service-now.com/sp?id=kb_article&amp;sys_id=7541196213ffe280df1955912244b0a2" class="external-link">set
+up DUO two-factor authentication</a> or <a href="https://broad.service-now.com/sp?id=kb_article&amp;sysparm_article=KB0011056" class="external-link">Google
+2FA</a> to use the Broad VPN. Contact <a href="https://intranet.broadinstitute.org/bits" class="external-link">BITS</a> for
+troubleshooting if you have a Broad-issued machine.</p>
+<p>If you can’t access the documentation linked above or can’t connect
+to the Broad VPN using your Broad credentials, please let the <a href="mailto:cb-admin@broadinstitute.org">workshop organizers</a> know
+so we can assess whether you will be able to participate in the
+workshop.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="prereq2" class="callout prereq">
+<div class="callout-square">
+<i class="callout-icon" data-feather="check"></i>
+</div>
+<div class="callout-inner">
+<h3 class="callout-title">Prerequisite<a class="anchor" aria-label="anchor" href="#prereq2"></a>
+</h3>
+<div class="callout-content">
+<div id="accordionSpoiler2" class="accordion spoiler-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler2" aria-expanded="false" aria-controls="collapseSpoiler2">
+  <h3 class="accordion-header" id="headingSpoiler2">
+<div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>Terminal Setup</h3>
+</button>
+<div id="collapseSpoiler2" class="accordion-collapse collapse" aria-labelledby="headingSpoiler2" data-bs-parent="#accordionSpoiler2">
+<div class="accordion-body">
 <p>Bash is the default shell on most Linux distributions and older
-versions of macOS. Windows users will need to install Git Bash to
-provide a Unix-like environment.</p>
-<ul><li><p><strong>Linux:</strong> The default shell is usually Bash, but if
-your machine is set up differently you can run it by opening a terminal
-and typing <code>bash</code> followed by the <kbd>enter</kbd> key. There
-is no need to install anything. Look for Terminal in your applications
-to start the Bash shell.</p></li>
-<li><p><strong>macOS:</strong> Open Terminal from
-<code>/Applications/Utilities</code> or Spotlight Search. In versions
-before Catalina, Bash is the default shell, so you do not need to do
-anything further. In Catalina and onwards, the default shell is zsh,
-which is similar but may behave differently from Bash in some cases. To
-switch to Bash, enter the command <code>bash</code> in your terminal
-window followed by the <kbd>enter</kbd> key.</p></li>
-<li>
-<p><strong>Windows:</strong> On Windows, CMD or PowerShell are
-normally available as the default shell environments. These use a syntax
-and set of applications unique to Windows systems and are incompatible
-with the more widely used Unix utilities. However, a Bash shell can be
-installed on Windows to provide a Unix-like environment. For this lesson
-we suggest using Git Bash, part of the &gt;<a href="https://gitforwindows.org/" class="external-link">Git for Windows</a> package:</p>
+versions of macOS. Windows users will need to install WSL to provide a
+Unix-like environment.</p>
+<div class="tabs">
+<nav><div id="nav-tab-1" class="nav nav-tabs" role="tablist">
+<button class="nav-link active" id="nav-tab-1-1" data-bs-toggle="tab" data-bs-target="#nav-tabpanel-1-1" type="button" role="tab" aria-controls="nav-tabpanel-1-1" aria-selected="true">
+  <h3 class="tab-header" id="nav-tab-heading-1-1">
+  Linux
+  </h3>
+</button>
+<button class="nav-link" id="nav-tab-1-2" data-bs-toggle="tab" data-bs-target="#nav-tabpanel-1-2" type="button" role="tab" aria-controls="nav-tabpanel-1-2" aria-selected="false">
+  <h3 class="tab-header" id="nav-tab-heading-1-2">
+  Mac
+  </h3>
+</button>
+<button class="nav-link" id="nav-tab-1-3" data-bs-toggle="tab" data-bs-target="#nav-tabpanel-1-3" type="button" role="tab" aria-controls="nav-tabpanel-1-3" aria-selected="false">
+  <h3 class="tab-header" id="nav-tab-heading-1-3">
+  Windows
+  </h3>
+</button>
+</div>
+</nav><div id="nav-tabContent-1" class="tab-content">
+<div id="nav-tabpanel-1-1" class="tab-pane show active" role="tabpanel" aria-labelledby="nav-tab-1-1">
+<p>The default shell is usually Bash, but if your machine is set up
+differently you can run it by opening a terminal and typing
+<code>bash</code> followed by the <kbd>enter</kbd> key. There is no need
+to install anything. Look for Terminal in your applications to start the
+Bash shell.</p>
+</div>
+<div id="nav-tabpanel-1-2" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-1-2">
+<p>Open Terminal from <code>/Applications/Utilities</code> or Spotlight
+Search. In versions before Catalina, Bash is the default shell, so you
+do not need to do anything further. In Catalina and onwards, the default
+shell is zsh, which is similar but may behave differently from Bash in
+some cases. To switch to Bash, enter the command <code>bash</code> in
+your terminal window followed by the <kbd>enter</kbd> key.</p>
+</div>
+<div id="nav-tabpanel-1-3" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-1-3">
+<p>On Windows, CMD or PowerShell are normally available as the default
+shell environments. These use a syntax and set of applications unique to
+Windows systems and are incompatible with the more widely used Unix
+utilities. However, a Bash shell can be installed on Windows to provide
+a Unix-like environment. For this lesson we suggest using <a href="https://learn.microsoft.com/en-us/windows/wsl/install" class="external-link">Windows
+Subsystem for Linux (WSL)</a>. Open PowerShell or Windows Command Prompt
+in administrator mode by right-clicking and selecting “Run as
+administrator”, enter <kbd>wsl –install</kbd>, then restart your
+machine.</p>
+<p>Alternatively, you can install Git Bash, part of the <a href="https://gitforwindows.org/" class="external-link">Git for Windows</a> packagee</p>
 <ul><li>Download the latest Git for Windows <a href="https://gitforwindows.org/" class="external-link">installer</a>.</li>
 <li>Double click the <code>.exe</code> file to run the installer (for
 example, <code>Git-2.42.0.2-64-bit.exe</code>) using the default
 settings.</li>
 <li>Once installed, open the shell by selecting Git Bash from the start
 menu (in the Git folder).</li>
-</ul><p>There are also some more advanced solutions available for running
-Bash commands on Windows. A Bash shell command-line tool is available
-for Windows 10, which you can use if you enable the <a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10" class="external-link">Windows
-Subsystem for Linux</a>. You can also run Bash commands on a remote
-computer or server that already has a Unix Shell from your Windows
-machine. This can be done through a Secure Shell (SSH) client. One
-client available for free for Windows is <a href="https://www.putty.org/" class="external-link">PuTTY</a>.</p>
-</li>
-</ul><p>If you encounter issues, the Carpentries has a <a href="https://github.com/carpentries/workshop-template/wiki/Configuration-Problems-and-Solutions" class="external-link">Configuration
+</ul><p>You can also run Bash commands on a remote computer or server that
+already has a Unix Shell from your Windows machine. This can be done
+through a Secure Shell (SSH) client. One client available for free for
+Windows is <a href="https://www.putty.org/" class="external-link">PuTTY</a>, which is also
+available through the <a href="https://apps.microsoft.com/detail/xpfnzksklbp7rj?hl=en-us&amp;gl=US" class="external-link">Microsoft
+store</a>.</p>
+<p>If you encounter issues, the Carpentries has a <a href="https://github.com/carpentries/workshop-template/wiki/Configuration-Problems-and-Solutions" class="external-link">Configuration
 Problems and Solutions wiki page</a> that may help.</p>
+<p>Broad recommends the SecurtCRT terminal application for Broad-issued
+Windows machines. Broadies can download through the <a href="https://intranet.broadinstitute.org/bits/service-catalog/applications/software-center-windows-self-service" class="external-link">Windows
+10 Software Center</a>. : 1. Click on the Windows logo. 1. Click on All
+Programs &gt; Microsoft System Center &gt; Configuration Manager &gt;
+Software Center 1. Locate and select SecureCRT, then click on
+“Install”.</p>
+<p>For help with installation on Broad-issued Windows machines, check
+the <a href="https://intranet.broadinstitute.org/bits/service-catalog/applications/software-center-windows-self-service" class="external-link">troubleshooting
+section</a> or contact <a href="https://intranet.broadinstitute.org/bits" class="external-link">BITS</a>.</p>
 </div>
 </div>
 </div>
-<div id="data-files" class="callout prereq">
-<div class="callout-square">
-<i class="callout-icon" data-feather="check"></i>
 </div>
-<div id="data-files" class="callout-inner">
-<h3 class="callout-title">Data Files<a class="anchor" aria-label="anchor" href="#data-files"></a>
-</h3>
-<div class="callout-content">
-<p>You need to download some files to follow this lesson:</p>
-<ol style="list-style-type: decimal"><li><p>Download <a href="data/shell-lesson.zip">shell-lesson.zip</a> and
-move the file to your Desktop.</p></li>
-<li><p>Unzip/extract the file (ask your instructor if you need help with
-this step). You should end up with a new folder called
-<code>shell-lesson</code> on your Desktop.</p></li>
-<li>
-<p>Open the terminal and type <code>ls</code> followed by the
-<kbd>enter</kbd> key.</p>
-<div class="codewrapper sourceCode" id="cb1">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">ls</span></span></code></pre>
 </div>
-<p>You should see a list of files and folders in your current
-directory.</p>
-</li>
-<li>
-<p>Then type:</p>
-<div class="codewrapper sourceCode" id="cb2">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="bu">pwd</span></span></code></pre>
 </div>
-<p>This command will show you where you are in your file system, which
-should now be your home directory. In the lesson, you will find out more
-about the commands <code>ls</code>, <code>pwd</code> and how to work
-with the data in <code>shell-lesson</code> folder.</p>
-</li>
+</div>
+</div>
+</div>
+</div>
+<div class="section level2">
+<h2 id="testing-broad-login-server-access">Testing Broad Login Server access<a class="anchor" aria-label="anchor" href="#testing-broad-login-server-access"></a></h2>
+<p>If you are on-site, connect to the <strong>Broad-Internal</strong>
+wireless network. If you are off-site, <a href="https://intranet.broadinstitute.org/bits/service-catalog/networking/vpn" class="external-link">connect</a>
+to the Broad VPN.</p>
+<div class="tabs">
+<nav><div id="nav-tab-2" class="nav nav-tabs" role="tablist">
+<button class="nav-link active" id="nav-tab-2-1" data-bs-toggle="tab" data-bs-target="#nav-tabpanel-2-1" type="button" role="tab" aria-controls="nav-tabpanel-2-1" aria-selected="true">
+  <h3 class="tab-header" id="nav-tab-heading-2-1">
+  Mac
+  </h3>
+</button>
+<button class="nav-link" id="nav-tab-2-2" data-bs-toggle="tab" data-bs-target="#nav-tabpanel-2-2" type="button" role="tab" aria-controls="nav-tabpanel-2-2" aria-selected="false">
+  <h3 class="tab-header" id="nav-tab-heading-2-2">
+  Linux
+  </h3>
+</button>
+<button class="nav-link" id="nav-tab-2-3" data-bs-toggle="tab" data-bs-target="#nav-tabpanel-2-3" type="button" role="tab" aria-controls="nav-tabpanel-2-3" aria-selected="false">
+  <h3 class="tab-header" id="nav-tab-heading-2-3">
+  Windows - WSL
+  </h3>
+</button>
+<button class="nav-link" id="nav-tab-2-4" data-bs-toggle="tab" data-bs-target="#nav-tabpanel-2-4" type="button" role="tab" aria-controls="nav-tabpanel-2-4" aria-selected="false">
+  <h3 class="tab-header" id="nav-tab-heading-2-4">
+  Windows - SecureCRT
+  </h3>
+</button>
+</div>
+</nav><div id="nav-tabContent-2" class="tab-content">
+<div id="nav-tabpanel-2-1" class="tab-pane show active" role="tabpanel" aria-labelledby="nav-tab-2-1">
+<ol style="list-style-type: decimal"><li>Open Terminal from <code>/Applications/Utilities</code> or Spotlight
+Search.</li>
+<li>Type <kbd>ssh &lt;username&gt;<span class="citation">@login.broadinstitute.org</span></kbd> [Example: ssh <a href="mailto:jcase@login.broadinstitute.org" class="email">jcase@login.broadinstitute.org</a> ]</li>
+<li>Enter your Broad password when prompted.</li>
+</ol></div>
+<div id="nav-tabpanel-2-2" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-2-2">
+<ol style="list-style-type: decimal"><li>Most Linux systems use Ctrl-Alt-T to start a Linux Terminal
+session.</li>
+<li>On the command line, type <kbd>ssh &lt;username&gt;<span class="citation">@login.broadinstitute.org</span></kbd> [Example: ssh <a href="mailto:jcase@login.broadinstitute.org" class="email">jcase@login.broadinstitute.org</a> ]</li>
+<li>Enter your Broad password when prompted.</li>
+</ol></div>
+<div id="nav-tabpanel-2-3" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-2-3">
+<ol style="list-style-type: decimal"><li>Open WSL from the start menu item or by typing <kbd>wsl</kbd> from a
+command prompt or PowerShell.</li>
+<li>Type <kbd>ssh &lt;username&gt;<span class="citation">@login.broadinstitute.org</span></kbd> [Example: ssh <a href="mailto:jcase@login.broadinstitute.org" class="email">jcase@login.broadinstitute.org</a> ]</li>
+<li>Enter your Broad password when prompted.</li>
+</ol></div>
+<div id="nav-tabpanel-2-4" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-2-4">
+<ol style="list-style-type: decimal"><li>Launch <a href="https://broad.service-now.com/sp?sys_kb_id=072a3dc613eb0f80449fb86f3244b0e8&amp;id=kb_article_view&amp;sysparm_rank=1&amp;sysparm_tsqueryId=f5b28afe47714e50a5d9a8ba216d43e9" class="external-link">SecureCRT</a>
+from the Start menu</li>
+<li>Go to the File menu and select “Connect”. Select the “New Session””
+button.</li>
+<li>Within the New Session Wizard window, select SSH2 at the Protocol
+toggle and click Next.</li>
+<li>Within the Hostname field, enter login.broadinstitute.org. Leave the
+Port and Firewall fields set to their defaults. Within the username
+field, enter your Broad username and click Next.</li>
+<li>Leave the SecureFX protocol field as is (eg. SFTP), click Next.</li>
+<li>Leave the session name field as it is, or rename it to something
+shorter. Click the Finish button.</li>
+<li>X11 setup (for future reference, not needed for this workshop):
+Select the newly created connection entry and click the Properties icon
+button. The Session Options window will appear. Select Remote/X11 from
+the menu on the left, check Forward X11 packets. Click the OK button to
+close the window.</li>
+<li>Finally, select your session and click the Connect button. Enter
+your password to log on.</li>
 </ol></div>
 </div>
 </div>
+<div class="section level4">
+<h4 id="show-your-successful-access">Show your successful access<a class="anchor" aria-label="anchor" href="#show-your-successful-access"></a></h4>
+<ol style="list-style-type: decimal"><li>Type <kbd>touch
+/broad/hptmp/computing_basics/&lt;username&gt;_was_here</kbd>
+</li>
+<li>Type <kbd>ls /broad/hptmp/computing_basics</kbd> Did you leave your
+mark?</li>
+<li>Type <kbd>exit</kbd> to leave the server.</li>
+</ol><p>If you were unable to access the Broad login servers, please let the
+<a href="mailto:cb-admin@broadinstitute.org">workshop organizers</a>
+know so we can help you troubleshoot before the start of the
+workshop.</p>
 <!-- 
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use. 
  -->
-
+</div>
+</div>
+</div>
 
       </section></main><nav class="bottom-pagination mx-md-4" aria-label="Next Chapter"><!-- content for small screens --><div class="d-block d-sm-block d-md-none">
         <a class="chapter-link float-end" href="01-introduction.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
