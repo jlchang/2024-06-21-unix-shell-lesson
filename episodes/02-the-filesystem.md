@@ -23,32 +23,46 @@ exercises: 20
 
 ## Moving around the file system
 
+:::::::::::::::::::::::::::::::::::::::::: spoiler
+
+## Setup instructions if not continuing from Episode 1
+
+Download `cb_unix_shell.tgz` to your home directory and unpack it.
+
+```bash
+$ cd
+$ wget https://github.com/jlchang/2024-05-09-Unix_Shell_pilot/raw/main/learners/files/cb_unix_shell.tgz
+$ tar -xzf cb_unix_shell.tgz
+```
+
+::::::::::::::::::::::::::::::::::::::::::
+
 We've learned how to use `pwd` to find our current location within our file system.
 We've also learned how to use `cd` to change locations and `ls` to list the contents
 of a directory. Now we're going to learn some additional commands for moving around
 within our file system.
 
-Use the commands we've learned so far to navigate to the `shell_data/untrimmed_fastq` directory, if
+Use the commands we've learned so far to navigate to the `cb_unix_shell/Dahl` directory, if
 you're not already there.
 
 ```bash
 $ cd
-$ cd shell_data
-$ cd untrimmed_fastq
+$ cd cb_unix_shell
+$ cd Dahl
 ```
 
 What if we want to move back up and out of this directory and to our top level
-directory? Can we type `cd shell_data`? Try it and see what happens.
+directory? Can we type `cd cb_unix_shell`? Try it and see what happens.
 
 ```bash
-$ cd shell_data
+$ cd cb_unix_shell
 ```
 
 ```output
--bash: cd: shell_data: No such file or directory
+-bash: cd: cb_unix_shell: No such file or directory
 ```
 
-Your computer looked for a directory or file called `shell_data` within the
+Your computer looked for a directory or file called `cb_unix_shell` within the
 directory you were already in. It didn't know you wanted to look at a directory level
 above the one you were located in.
 
@@ -66,15 +80,17 @@ $ pwd
 ```
 
 ```output
-/home/dcuser/shell_data
+/home/unix/jlchang/cb_unix_shell
 ```
+
+Note: your output will show your username where you see `jlchang` above.
 
 ```bash
 $ ls
 ```
 
 ```output
-sra_metadata  untrimmed_fastq
+Dahl  Seuss  authors.txt  data  prodinfo454
 ```
 
 From this output, we can see that `..` did indeed take us back one level in our file system.
@@ -85,13 +101,13 @@ You can chain these together like so:
 $ ls ../../
 ```
 
-prints the contents of `/home`.
+prints the contents of `/home/unix`.
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
 ## Finding hidden directories
 
-First navigate to the `shell_data` directory. There is a hidden directory within this directory. Explore the options for `ls` to
+First navigate to the `cb_unix_shell` directory. There is a hidden directory within this directory. Explore the options for `ls` to
 find out how to see hidden directories. List the contents of the directory and
 identify the name of the text file in that directory.
 
@@ -115,7 +131,7 @@ $ ls -a
 ```
 
 ```output
-.  ..  .hidden	sra_metadata  untrimmed_fastq
+.  ..  .hidden  Dahl  Seuss  authors.txt  data  prodinfo454
 ```
 
 The name of the hidden directory is `.hidden`. We can navigate to that directory
@@ -144,8 +160,8 @@ The name of the text file is `youfoundit.txt`.
 In most commands the flags can be combined together in no particular order to obtain the desired results/output.
 
 ```
-$ ls -Fa
-$ ls -laF
+ls -Fa
+ls -laF
 ```
 
 ## Examining the contents of other directories
@@ -163,14 +179,14 @@ $ cd
 Then enter the command:
 
 ```bash
-$ ls shell_data
+$ ls cb_unix_shell
 ```
 
 ```output
-sra_metadata  untrimmed_fastq
+Dahl  Seuss  authors.txt  data  prodinfo454
 ```
 
-This will list the contents of the `shell_data` directory without
+This will list the contents of the `cb_unix_shell` directory without
 you needing to navigate there.
 
 The `cd` command works in a similar way.
@@ -179,17 +195,17 @@ Try entering:
 
 ```bash
 $ cd
-$ cd shell_data/untrimmed_fastq
+$ cd cb_unix_shell/Seuss
 ```
 
-This will take you to the `untrimmed_fastq` directory without having to go through
+This will take you to the `Seuss` directory without having to go through
 the intermediate directory.
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
 ## Navigating practice
 
-Navigate to your home directory. From there, list the contents of the `untrimmed_fastq`
+Navigate to your home directory. From there, list the contents of the `Seuss`
 directory.
 
 :::::::::::::::  solution
@@ -198,11 +214,11 @@ directory.
 
 ```bash
 $ cd
-$ ls shell_data/untrimmed_fastq/
+$ ls cb_unix_shell/Seuss
 ```
 
 ```output
-SRR097977.fastq  SRR098026.fastq 
+Cat_in_the_Hat  Green_Eggs_and_Ham
 ```
 
 :::::::::::::::::::::::::
@@ -219,46 +235,50 @@ hierarchy. Navigate to the home directory, then enter the `pwd`
 command.
 
 ```bash
-$ cd  
-$ pwd  
+$ cd
+$ pwd
 ```
 
 You will see:
 
 ```output
-/home/dcuser
+/home/unix/jlchang
 ```
 
+Note: your output will show your username where you see `jlchang` above.
+
 This is the full name of your home directory. This tells you that you
-are in a directory called `dcuser`, which sits inside a directory called
+are in a directory named with your username, which sits inside a directory
+called `unix` which is found in a directory called
 `home` which sits inside the very top directory in the hierarchy. The
 very top of the hierarchy is a directory called `/` which is usually
-referred to as the *root directory*. So, to summarize: `dcuser` is a
-directory in `home` which is a directory in `/`. More on `root` and
-`home` in the next section.
+referred to as the *root directory*. So, to summarize: your home directory is a
+directory in `unix` which is a directory in `home` which is a directory
+in `/`. More on `root` and `home` in the next section.
 
 Now enter the following command:
 
 ```bash
-$ cd /home/dcuser/shell_data/.hidden
+$ cd cb_unix_shell/Seuss/Green_Eggs_and_Ham/
 ```
 
-This jumps forward multiple levels to the `.hidden` directory.
+This jumps forward multiple levels to the `Green_Eggs_and_Ham` directory.
 Now go back to the home directory.
 
 ```bash
 $ cd
 ```
 
-You can also navigate to the `.hidden` directory using:
+I can also navigate to the `Green_Eggs_and_Ham` directory using:
 
 ```bash
-$ cd shell_data/.hidden
+$ cd /home/unix/<username>/cb_unix_shell/Seuss/Green_Eggs_and_Ham
 ```
 
-These two commands have the same effect, they both take us to the `.hidden` directory.
-The first uses the absolute path, giving the full address from the home directory. The
-second uses a relative path, giving only the address from the working directory. A full
+You'll need to substitute `<username>` with your Broad username (without angle brackets).
+
+These two commands have the same effect, they both take us to the `Green_Eggs_and_Ham` directory.
+The first uses a relative path, giving only the address from the working directory (in this case, your home directory).  The second uses the absolute path, giving the full address from the root directory. A full
 path always starts with a `/`. A relative path does not.
 
 A relative path is like getting directions from someone on the street. They tell you to
@@ -267,10 +287,7 @@ you're standing there together, but not so well if you're trying to tell someone
 get there from another country. A full path is like GPS coordinates. It tells you exactly
 where something is no matter where you are right now.
 
-You can usually use either a full path or a relative path depending on what is most convenient.
-If we are in the home directory, it is more convenient to enter the full path.
-If we are in the working directory, it is more convenient to enter the relative path
-since it involves less typing.
+You can usually use either a full path or a relative path depending on what is most convenient or involves less typing.
 
 Over time, it will become easier for you to keep a mental note of the
 structure of the directories that you are using and how to quickly
@@ -283,12 +300,12 @@ navigate amongst them.
 Using the filesystem diagram below, if `pwd` displays `/Users/thing`,
 what will `ls ../backup` display?
 
+![](fig/filesystem-challenge.svg){alt='File System for Challenge Questions'}
+
 1. `../backup: No such file or directory`
 2. `2012-12-01 2013-01-08 2013-01-27`
 3. `2012-12-01/ 2013-01-08/ 2013-01-27/`
 4. `original pnas_final pnas_sub`
-
-![](fig/filesystem-challenge.svg){alt='File System for Challenge Questions'}
 
 :::::::::::::::  solution
 
@@ -318,14 +335,14 @@ in `root` directories will require special permissions which are
 not discussed here, so it's best to avoid them and work within your
 home directory. Dealing with the `home` directory is very common.
 The tilde character, `~`, is a shortcut for your home directory.
-In our case, the `root` directory is **two** levels above our
+In our case, the `root` directory is **three** levels above our
 `home` directory, so `cd` or `cd ~` will take you to
-`/home/dcuser` and `cd /` will take you to `/`. Navigate to the
-`shell_data` directory:
+`/home/unix/<username>` and `cd /` will take you to `/`. Navigate to the
+`cb_unix_shell` directory:
 
 ```bash
 $ cd
-$ cd shell_data
+$ cd cb_unix_shell
 ```
 
 Then enter the command:
@@ -335,7 +352,7 @@ $ ls ~
 ```
 
 ```output
-R  r_data  shell_data
+cb_unix_shell  cb_unix_shell.tgz
 ```
 
 This prints the contents of your home directory, without you needing to
@@ -350,5 +367,3 @@ The commands `cd`, and `cd ~` are very useful for quickly navigating back to you
 - Relative paths specify a location starting from the current location, while absolute paths specify a location from the root of the file system.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
-
-

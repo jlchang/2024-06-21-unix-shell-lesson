@@ -1,6 +1,6 @@
 ---
 title: Introducing the Shell
-teaching: 20
+teaching: 10
 exercises: 10
 ---
 
@@ -47,60 +47,89 @@ There are many reasons to learn about the shell:
   own machine. These tasks are best performed using remote computers or cloud computing, which can only be accessed
   through a shell.
 
-In this lesson you will learn how to use the command line interface to move around in your file system.
+In this lesson you will learn how to use the command line interface to move around in your file system. We will learn the basics of the shell by manipulating some data files on a remote Unix server.
 
-## How to access the shell
+## Broad login servers
 
-On a Mac or Linux machine, you can access a shell through a program called "Terminal", which is already available
+All Broadies have access to Broad [login servers](https://intranet.broadinstitute.org/bits/service-catalog/scientific-computing/login-servers). These are ’remote server’s, a computer that is not the one you are working on right now.
+
+On a Mac or Linux machine, you can reach the login servers using a program called "Terminal", which is already available
 on your computer. The Terminal is a window into which we will type commands. If you're using Windows,
-you'll need to download a separate program to access the shell.
-
-To save time, we are going to be working on a remote server where all the necessary data and software available.
-When we say a 'remote server', we are talking about a computer that is not the one you are working on right now.
-You will access the Carpentries remote server where everything is prepared for the lesson.
-We will learn the basics of the shell by manipulating some data files. Some of these files are very large
-, and would take time to download to your computer.
-We will also be using several bioinformatic packages in later lessons and installing all of the software
-would take up time even more time. A 'ready-to-go' server lets us focus on learning.
+you'll use SecureCRT.
 
 ## How to access the remote server
 
-You can log-in to the remote server using the [instructions from the Introduction to Cloud Computing for Genomics lesson](https://datacarpentry.org/cloud-genomics/02-logging-onto-cloud#logging-onto-a-cloud-instance).
-Your instructor will supply to you the `ip_address` and password that you need to login.
+1. Connect to the **Broad-Internal** wireless network.
+1. Launch your preferred SSH client, such as Terminal (Mac or Unix) or SecureCRT (Windows)
+1. Log in to a Broad login server using the [instructions on the Broad Intranet](https://intranet.broadinstitute.org/bits/service-catalog/scientific-computing/login-servers).
 
-Each of you will have a different `ip_address`. This will
-prevent us from accidentally changing each other's files as we work through the
-exercises. The password will be the same for everyone.
+:::::::::::::::::::::::::::::::::::::::::: spoiler
+
+## Your Broad username and Unix password
+
+The portion of your Broad email address before the @ symbol is your Broad username.
+Your Unix password is the the same one you use for your Broad-issued computer.
+::::::::::::::::::::::::::::::::::::::::::
 
 After logging in, you will see a screen showing something like this:
 
 ```output
-Welcome to Ubuntu 20.04.5 LTS (GNU/Linux 5.4.0-137-generic x86_64)
+Last login: Tue Apr 23 08:33:43 2024 from 10.75.224.147
+--------------------------------------------------------------
+Welcome to the host named login01
+RedHat 7.9 x86_64
+--------------------------------------------------------------
+Puppet:        7.29.1
+Facter:        4.6.1
+Environment:   production
+FQDN:          login01.broadinstitute.org
+VLAN:          32
+IP:            69.173.65.17
+Born On:       2019-07-28
+Uptime:        18 days
+Model:         VMware Virtual Platform
+CPUs:          2
+Memory:        7.62 GiB
+--------------------------------------------------------------
+ IMPORTANT: This login host is a SHARED resource. Please limit
+ your usage to editing, simple scripts, and small data transfer
+ tasks. To encourage mindful use, limits have been put in place
+ including memory limitations.
 
- * Documentation:  https://help.ubuntu.com
- * Management:     https://landscape.canonical.com
- * Support:        https://ubuntu.com/advantage
+ To read more about this service, see https://broad.io/login.
 
-  System information as of Mon 13 Mar 2023 03:57:46 AM UTC
+ ################## Monthly Reboot Schedule ##################
+ Since there is no convenient time to reboot login hosts we
+ are establishing a monthly rotation.
 
-  System load:  0.0                Processes:             192
-  Usage of /:   20.3% of 98.27GB   Users logged in:       0
-  Memory usage: 25%                IPv4 address for eth0: 172.31.12.214
-  Swap usage:   0%
+ login01   - 1st Sunday of each month at 6 PM
+ login02   - 2nd Sunday of each month at 6 PM
+ login03   - 3rd Sunday of each month at 6 PM
+ login04   - 4th Sunday of each month at 6 PM
 
-  Get cloud support with Ubuntu Advantage Cloud Guest:
-    http://www.ubuntu.com/business/services/cloud
+ If starting a long session, choose the host rebooted last
+--------------------------------------------------------------
+This computer system is the property of the Broad Institute.
 
-178 updates can be applied immediately.
-108 of these updates are standard security updates.
-To see these additional updates run: apt list --upgradable
+It is for authorized use only. By using this system all users
+acknowledge notice of, and agree to comply with, Broad's
+Acceptable Use (broad.io/AcceptableUse).
 
+Unauthorized or improper use of this system may result in
+administrative disciplinary action and/or other sanctions.
 
-Last login: Fri Mar 10 03:14:44 2023 from 72.83.168.14
+By continuing to use this system you indicate
+your awareness of and consent to Broad's Acceptable Use Policy.
+(broad.io/AcceptableUse).
+
+Log off immediately if you do not agree to the conditions
+stated in this warning.
+--------------------------------------------------------------
 ```
 
-This provides a lot of information about the remote server that you're logging into. We're not going to use most of this information for
-our workshop, so you can clear your screen using the `clear` command.
+This provides a lot of information about the login servers. Continuing means
+you agree to Broad's acceptable use policy. If you disagree, please type `exit`.
+Otherwise let's continue. You can clear your screen using the `clear` command.
 
 Type the word `clear` into the terminal and press the `Enter` key.
 
@@ -132,9 +161,18 @@ which hold files or other directories.
 
 Several commands are frequently used to create, inspect, rename, and delete files and directories.
 
-:::::::::::::::::::::::::::::::::::::::::  callout
+```bas
+$
+```
 
-## Preparation Magic
+The dollar sign is a **prompt**, which shows us that the shell is waiting for input;
+your shell may use a different character as a prompt and may add information before
+the prompt. When typing commands, either from these lessons or from other sources,
+do not type the prompt, only the commands that follow it.
+
+:::::::::::::::::::::::::::::::::::::::: spoiler
+
+## [Optional] Customizing your Unix prompt
 
 You may have a prompt (the characters to the left of the cursor) that looks different from the `$` sign character used here.
 If you would like to change your prompt to match the example prompt, first type the command:
@@ -150,22 +188,13 @@ To change back to your original prompt, type in the output of the previous comma
 original configuration) between the quotes in the following command:
 `PS1=""`
 
-For example, if the output of `echo $PS1` was `\u@\h:\w $ `,
+For example, if the output of `echo $PS1` was `\u@\h:\w $`,
 then type those characters between the quotes in the above command: `PS1="\u@\h:\w $ "`.
 Alternatively, you can reset your original prompt by exiting the shell and opening a new session.
 
 This isn't necessary to follow along (in fact, your prompt may have other helpful information you want to know about).  This is up to you!
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-```bash
-$
-```
-
-The dollar sign is a **prompt**, which shows us that the shell is waiting for input;
-your shell may use a different character as a prompt and may add information before
-the prompt. When typing commands, either from these lessons or from other sources,
-do not type the prompt, only the commands that follow it.
+::::::::::::::::::::::::::::::::::::::::::::::::
 
 Let's find out where we are by running a command called `pwd`
 (which stands for "print working directory").
@@ -175,18 +204,20 @@ i.e.,
 the directory that the computer assumes we want to run commands in,
 unless we explicitly specify something else.
 Here,
-the computer's response is `/home/dcuser`,
-which is the top level directory within our cloud system:
+the computer's response is `/home/unix/<username>`, also known as your home directory.
+It is a common convention to use angle brackets as a hint to substitute an appropriate value (without the brackets).
 
 ```bash
 $ pwd
 ```
 
 ```output
-/home/dcuser
+/home/unix/<username>
 ```
 
-Let's look at how our file system is organized. We can see what files and subdirectories are in this directory by running `ls`,
+Your screen will show your username where you see <username> in the output box above.
+
+Let's look at our file system. We can see what files and subdirectories are in this directory by running `ls`,
 which stands for "listing":
 
 ```bash
@@ -194,23 +225,75 @@ $ ls
 ```
 
 ```output
-R  r_data  shell_data
+
 ```
 
 `ls` prints the names of the files and directories in the current directory in
 alphabetical order,
-arranged neatly into columns.
-We'll be working within the `shell_data` subdirectory, and creating new subdirectories, throughout this workshop.
+arranged neatly into columns. Your output may look different if you already have files in your home directory. Let's get some example directories and files so we can practice navigating in a Unix environment.
+
+On most Unix systems, you can grab a file over the internet using a tool called `wget`.
+
+```bash
+$ wget https://github.com/jlchang/2024-05-09-Unix_Shell_pilot/raw/main/learners/files/cb_unix_shell.tgz
+```
+
+```output
+--2024-04-26 08:57:28--  https://github.com/jlchang/2024-05-09-Unix_Shell_pilot/raw/jlc_episode1_edits/learners/files/cb_unix_shell.tgz
+Resolving github.com (github.com)... 140.82.113.4
+Connecting to github.com (github.com)|140.82.113.4|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://raw.githubusercontent.com/jlchang/2024-05-09-Unix_Shell_pilot/jlc_episode1_edits/learners/files/cb_unix_shell.tgz [following]
+--2024-04-26 08:57:28--  https://raw.githubusercontent.com/jlchang/2024-05-09-Unix_Shell_pilot/jlc_episode1_edits/learners/files/cb_unix_shell.tgz
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.109.133, 185.199.110.133, 185.199.111.133, ...
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.109.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 115379 (113K) [application/octet-stream]
+Saving to: ‘cb_unix_shell.tgz’
+
+cb_unix_shell.tgz              100%[===================================================>] 112.67K  --.-KB/s    in 0.1s
+
+2024-04-26 08:57:29 (892 KB/s) - ‘cb_unix_shell.tgz’ saved [115379/115379]
+
+```
+
+Now if we `ls`
+
+```bash
+$ ls
+```
+
+```output
+cb_unix_shell.tgz
+```
+
+We downloaded a "tarball". It's a compressed file that can be unpacked. Let's unpack it!
+
+```bash
+$ tar -xzf cb_unix_shell.tgz
+```
+
+Now if we `ls` again
+
+```bash
+$ ls
+```
+
+```output
+cb_unix_shell  cb_unix_shell.tgz
+```
+
+Let's explore the `cb_unix_shell` subdirectory.
 
 The command to change locations in our file system is `cd`, followed by a
 directory name to change our working directory.
 `cd` stands for "change directory".
 
-Let's say we want to navigate to the `shell_data` directory we saw above.  We can
+Let's say we want to navigate to the `cb_unix_shell` directory we saw above.  We can
 use the following command to get there:
 
 ```bash
-$ cd shell_data
+$ cd cb_unix_shell
 ```
 
 Let's look at what is in this directory:
@@ -220,22 +303,30 @@ $ ls
 ```
 
 ```output
-sra_metadata  untrimmed_fastq
+Dahl  Seuss  authors.txt  data  prodinfo454
 ```
 
-We can make the `ls` output more comprehensible by using the **flag** `-F`,
-which tells `ls` to add a trailing `/` to the names of directories:
+We can tell `ls` to display more information for each item
+in the directory by giving it a command line **flag**. Use the `-l` option for the `ls` command, like so:
 
 ```bash
-$ ls -F
+$ ls -l
 ```
 
 ```output
-sra_metadata/  untrimmed_fastq/
+total 515
+drwxr-sr-x   4 jlchang puppet    94 May  8 01:53 Dahl
+drwxr-sr-x   4 jlchang puppet    68 May  8 01:56 Seuss
+-rw-r--r--   1 jlchang puppet   155 Mar 14  2013 authors.txt
+-rw-r--r--   1 jlchang puppet 19085 Mar 14  2013 data
+drwxr-sr-x 268 jlchang puppet 19483 May  8 01:55 prodinfo454
 ```
 
-Anything with a "/" after it is a directory. Things with a "\*" after them are programs. If
-there are no decorations, it's a file.
+Note: your output will show your username where you see `jlchang` above.
+
+The additional information given includes the name of the owner of the file,
+when the file was last modified, and whether the current user has permission
+to read and write to the file.
 
 `ls` has lots of other options. To find out what they are, we can type:
 
@@ -250,54 +341,42 @@ file using your keyboard's down arrow or use the <kbd>Space</kbd> key to go forw
 and the <kbd>b</kbd> key to go backwards one page. When you are done reading, hit <kbd>q</kbd>
 to quit.
 
-:::::::::::::::::::::::::::::::::::::::  challenge
+::::::::::::::::::::::::::::::::::::::: spoiler
 
-## Challenge
+## Make `ls` output more readable at-a-glance
 
-Use the `-l` option for the `ls` command to display more information for each item
-in the directory. What is one piece of additional information this long format
-gives you that you don't see with the bare `ls` command?
-
-:::::::::::::::  solution
-
-## Solution
+We can make the `ls` output more comprehensible by using the **flag** `-F`,
+which tells `ls` to add a trailing `/` to the names of directories:
 
 ```bash
-$ ls -l
+$ ls -F
 ```
 
 ```output
-total 8
-drwxr-x--- 2 dcuser dcuser 4096 Jul 30  2015 sra_metadata
-drwxr-xr-x 2 dcuser dcuser 4096 Nov 15  2017 untrimmed_fastq
+Dahl/  Seuss/  authors.txt  data  prodinfo454/
 ```
 
-The additional information given includes the name of the owner of the file,
-when the file was last modified, and whether the current user has permission
-to read and write to the file.
+Anything with a "/" after it is a directory. Things with a "\*" after them are programs. If
+there are no decorations, it's a file. Broad servers use `ls -CF` by default. Knowing `ls -F` can be useful on servers that show plain `ls` output. For a color-coded option, try `ls --color=auto`.
 
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::::::::::::::::::::::::::::::::::::::::::::::
 
 No one can possibly learn all of these arguments, that's what the manual page
 is for. You can (and should) refer to the manual page or other help files
 as needed.
 
-Let's go into the `untrimmed_fastq` directory and see what is in there.
+Let's go into the `Dahl` directory and see what is in there.
 
 ```bash
-$ cd untrimmed_fastq
+$ cd Dahl
 $ ls -F
 ```
 
 ```output
-SRR097977.fastq  SRR098026.fastq
+Charlie_and_the_Chocolate_Factory/  James_and_the_Giant_Peach/
 ```
 
-This directory contains two files with `.fastq` extensions. FASTQ is a format
-for storing information about sequencing reads and their quality.
-We will be learning more about FASTQ files in a later lesson.
+This directory contains two subdirectories with long names. Unix has a great trick to minimize typing long names!
 
 ### Shortcut: Tab Completion
 
@@ -307,49 +386,42 @@ as a shortcut. When you start typing out the name of a directory or file, then
 hit the <kbd>Tab</kbd> key, the shell will try to fill in the rest of the
 directory or file name.
 
-Return to your home directory:
+From the `Dahl` directory:
 
 ```bash
-$ cd
-```
-
-then enter:
-
-```bash
-$ cd she<tab>
+$ cd J<tab>
 ```
 
 The shell will fill in the rest of the directory name for
-`shell_data`.
+`James_and_the_Giant_Peach`.
 
-Now change directories to `untrimmed_fastq` in `shell_data`
+Now change directories to `James_and_the_Giant_Peach` in `Dahl`
 
 ```bash
-$ cd shell_data
-$ cd untrimmed_fastq
+$ cd James_and_the_Giant_Peach
 ```
 
 Using tab complete can be very helpful. However, it will only autocomplete
 a file or directory name if you've typed enough characters to provide
 a unique identifier for the file or directory you are trying to access.
 
-For example, if we now try to list the files which names start with `SR`
+For example, if we now try to list the files which names start with `Au`
 by using tab complete:
 
 ```bash
-$ ls SR<tab>
+$ ls Au<tab>
 ```
 
-The shell auto-completes your command to `SRR09`, because all file names in
-the directory begin with this prefix. When you hit
+The shell auto-completes your command to `Aunt_Sp`, because there are two files in
+the directory that begin with `Aunt_Sp`. When you hit
 <kbd>Tab</kbd> again, the shell will list the possible choices.
 
 ```bash
-$ ls SRR09<tab><tab>
+$ ls Aunt_Sp<tab><tab>
 ```
 
 ```output
-SRR097977.fastq  SRR098026.fastq
+Aunt_Spiker  Aunt_Sponge
 ```
 
 Tab completion can also fill in the names of programs, which can be useful if you
@@ -384,5 +456,3 @@ using the command line shell enables us to make our workflow more efficient and 
 - Tab completion can reduce errors from mistyping and make work more efficient in the shell.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
-
-
