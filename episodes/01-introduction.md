@@ -161,7 +161,7 @@ which hold files or other directories.
 
 Several commands are frequently used to create, inspect, rename, and delete files and directories.
 
-```bas
+```bash
 $
 ```
 
