@@ -190,6 +190,41 @@ in our FASTQ files that contain
 $ grep -B1 -A2 NNNNNNNNNN SRR098026.fastq > bad_reads.txt
 ```
 
+:::::::::::::::::::::::::::::::  spoiler
+
+## No such file or directory
+
+If you see something similar to
+
+```output
+grep: SRR098026.fasta: No such file or directory
+```
+
+grep is telling you it couldn't find the file you specified. Take a close look at the error message. We asked grep to look for a `fasta` file instead of `fastq`... No wonder grep was confused!
+
+
+::::::::::::::::::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::  spoiler
+
+## Permission denied !?!
+
+If you're seeing
+
+```output
+-bash: bad_reads.txt: Permission denied
+```
+
+your current working directory is probably `/broad/hptmp/computing_basics/untrimmed_fastq` and not `~/untrimmed_fastq`
+
+you can use this command to find out
+
+```bash
+pwd
+```
+
+:::::::::::::::::::::::::::::::::::::::::::::
+
 :::::::::::::::::::::::::::::::::::::::::  callout
 
 ## File extensions
@@ -532,9 +567,6 @@ foo is abcEFG
 
 Let's write a for loop to show us the first two lines of the fastq files we downloaded earlier. You will notice the shell prompt changes from `$` to `>` and back again as we were typing in our loop. The second prompt, `>`, is different to remind us that we haven't finished typing a complete command yet. A semicolon, `;`, can be used to separate two commands written on a single line.
 
-```bash
-$ cd ../untrimmed_fastq/
-```
 
 ```bash
 $ for filename in *.fastq
