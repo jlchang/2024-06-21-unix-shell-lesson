@@ -217,7 +217,7 @@ If you're seeing
 
 your current working directory is probably `/broad/hptmp/computing_basics/untrimmed_fastq` and not `~/untrimmed_fastq`
 
-you can use this command to find out
+you can use this command to _p_rint your _w_orking _d_irectory
 
 ```bash
 pwd
