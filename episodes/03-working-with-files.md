@@ -626,7 +626,7 @@ talk more about this in [a later lesson](05-writing-scripts.md)).
 Our goal for now is to change permissions on this file so that you no longer have `w` or write permissions. We can do this using the `chmod` (change mode) command and subtracting (`-`) the write permission `-w`.
 
 ```bash
-$ chmod -w SRR098026-backup.fastq
+$ chmod -w SRR097977-backup.fastq
 $ ls -l
 ```
 
