@@ -43,12 +43,28 @@ nucleotide at that position in the DNA sequence.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-We'll search for strings inside of our fastq files. Let's first make sure we are in the correct
-directory:
+We'll search for strings inside of our fastq files. Usually, it's best to minimize the number of copies of data so there's a single "source of truth" to reference. For this workshop, we're going to have you copy the files to your home directory.
 
 ```bash
-$ cd ~/shell_data/untrimmed_fastq
+$ cd 
+$ cp -r /broad/hptmp/computing_basics/untrimmed_fastq/ .
+$ cd untrimmed_fastq
 ```
+
+:::::::::::::::::::::::::::::::::::::::::: spoiler
+
+## What if /broad/hptmp/computing_basics is missing?
+
+Download `untrimmed_fastq.zip` to your home directory and unpack it.
+
+```bash
+$ cd
+wget https://github.com/jlchang/2024-05-09-Unix_Shell_pilot/raw/main/learners/files/untrimmed_fastq.zip
+$ unzip untrimmed_fastq.zip
+$ cd untrimmed_fastq
+```
+
+::::::::::::::::::::::::::::::::::::::::::
 
 Suppose we want to see how many reads in our file have really bad segments containing 10 consecutive unknown nucleotides (Ns).
 
@@ -195,14 +211,14 @@ We can check the number of lines in our new file using a command called `wc`.
 in a file. The FASTQ file may change over time, so given the potential for updates,
 make sure your file matches your instructor's output.
 
-As of Sept. 2020, wc gives the following output:
+For our copy of these fastq files, wc gives the following output:
 
 ```bash
 $ wc bad_reads.txt
 ```
 
 ```output
-  802    1338   24012 bad_reads.txt
+  537  1073 23217 bad_reads.txt
 ```
 
 This will tell us the number of lines, words and characters in the file. If we
@@ -213,7 +229,7 @@ $ wc -l bad_reads.txt
 ```
 
 ```output
-802 bad_reads.txt
+537 bad_reads.txt
 ```
 
 :::::::::::::::::::::::::::::::::::::::  challenge
@@ -292,7 +308,7 @@ $ wc -l bad_reads.txt
 ```
 
 ```output
-802 bad_reads.txt
+537 bad_reads.txt
 ```
 
 ```bash
@@ -317,7 +333,7 @@ $ wc -l bad_reads.txt
 ```
 
 ```output
-802 bad_reads.txt
+537 bad_reads.txt
 ```
 
 ```bash
@@ -326,7 +342,7 @@ $ wc -l bad_reads.txt
 ```
 
 ```output
-802 bad_reads.txt
+537 bad_reads.txt
 ```
 
 The output of our second call to `wc` shows that we have not overwritten our original data.
@@ -339,7 +355,7 @@ $ wc -l bad_reads.txt
 ```
 
 ```output
-802 bad_reads.txt
+537 bad_reads.txt
 ```
 
 :::::::::::::::::::::::::::::::::::::::::  callout
