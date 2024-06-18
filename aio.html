@@ -414,7 +414,7 @@ on the Broad Intranet</a>.</li>
   <h3 class="accordion-header" id="headingSpoiler1">
 <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>Your Broad username and Unix password</h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
 <div class="accordion-body">
 <p>The portion of your Broad email address before the @ symbol is your
 Broad username. Your Unix password is the the same one you use for your
@@ -534,7 +534,7 @@ the prompt, only the commands that follow it.</p>
   <h3 class="accordion-header" id="headingSpoiler2">
 <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>[Optional] Customizing your Unix prompt</h3>
 </button>
-<div id="collapseSpoiler2" class="accordion-collapse collapse" aria-labelledby="headingSpoiler2" data-bs-parent="#accordionSpoiler2">
+<div id="collapseSpoiler2" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler2" aria-labelledby="headingSpoiler2">
 <div class="accordion-body">
 <p>You may have a prompt (the characters to the left of the cursor) that
 looks different from the <code>$</code> sign character used here. If you
@@ -723,7 +723,7 @@ quit.</p>
   <h3 class="accordion-header" id="headingSpoiler3">
 <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>Make ls output more readable at-a-glance</h3>
 </button>
-<div id="collapseSpoiler3" class="accordion-collapse collapse" aria-labelledby="headingSpoiler3" data-bs-parent="#accordionSpoiler3">
+<div id="collapseSpoiler3" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler3" aria-labelledby="headingSpoiler3">
 <div class="accordion-body">
 <p>We can make the <code>ls</code> output more comprehensible by using
 the <strong>flag</strong> <code>-F</code>, which tells <code>ls</code>
@@ -2537,6 +2537,55 @@ to another file called <code>bad_reads.txt</code>.</p>
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-B1</span> <span class="at">-A2</span> NNNNNNNNNN SRR098026.fastq <span class="op">&gt;</span> bad_reads.txt</span></code></pre>
 </div>
+<div id="accordionSpoiler2" class="accordion spoiler-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler2" aria-expanded="false" aria-controls="collapseSpoiler2">
+  <h3 class="accordion-header" id="headingSpoiler2">
+<div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>No such file or directory</h3>
+</button>
+<div id="collapseSpoiler2" class="accordion-collapse collapse" aria-labelledby="headingSpoiler2" data-bs-parent="#accordionSpoiler2">
+<div class="accordion-body">
+<p>If you see something similar to</p>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>grep: SRR098026.fasta: No such file or directory</code></pre>
+</div>
+<p>grep is telling you it couldn’t find the specified file. Take a close
+look at the error message. Grep was asked to look for a
+<code>fasta</code> file instead of <code>fastq</code>… No wonder grep
+was confused!</p>
+</div>
+</div>
+</div>
+</div>
+<div id="accordionSpoiler3" class="accordion spoiler-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler3" aria-expanded="false" aria-controls="collapseSpoiler3">
+  <h3 class="accordion-header" id="headingSpoiler3">
+<div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>Permission denied !?!</h3>
+</button>
+<div id="collapseSpoiler3" class="accordion-collapse collapse" aria-labelledby="headingSpoiler3" data-bs-parent="#accordionSpoiler3">
+<div class="accordion-body">
+<p>If you’re seeing</p>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>-bash: bad_reads.txt: Permission denied</code></pre>
+</div>
+<p>your current working directory is probably
+<code>/broad/hptmp/computing_basics/untrimmed_fastq</code> and not
+<code>~/untrimmed_fastq</code></p>
+<p>you can use this command to _p_rint your _w_orking _d_irectory</p>
+<div class="codewrapper sourceCode" id="cb11">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="bu">pwd</span></span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
 <div id="file-extensions" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
@@ -2567,10 +2616,10 @@ characters in a file. The FASTQ file may change over time, so given the
 potential for updates, make sure your file matches your instructor’s
 output.</p>
 <p>For our copy of these fastq files, wc gives the following output:</p>
-<div class="codewrapper sourceCode" id="cb9">
+<div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="ex">$</span> wc bad_reads.txt</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="ex">$</span> wc bad_reads.txt</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2580,10 +2629,10 @@ output.</p>
 <p>This will tell us the number of lines, words and characters in the
 file. If we want only the number of lines, we can use the
 <code>-l</code> flag for <code>lines</code>.</p>
-<div class="codewrapper sourceCode" id="cb11">
+<div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="ex">$</span> wc <span class="at">-l</span> bad_reads.txt</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="ex">$</span> wc <span class="at">-l</span> bad_reads.txt</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2610,10 +2659,10 @@ Remember that every sequence is formed by four lines.</p>
 </button>
 <div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb13">
+<div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="ex">$</span> wc <span class="at">-l</span> SRR098026.fastq</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="ex">$</span> wc <span class="at">-l</span> SRR098026.fastq</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2624,18 +2673,18 @@ Remember that every sequence is formed by four lines.</p>
 in your fastq file.</p>
 <p>This can be done using <a href="https://www.gnu.org/software/bash/manual/html_node/Shell-Arithmetic.html" class="external-link">shell
 integer arithmetic</a></p>
-<div class="codewrapper sourceCode" id="cb15">
+<div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="ex">$</span> echo <span class="va">$((</span><span class="dv">996</span><span class="op">/</span><span class="dv">4</span><span class="va">))</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="ex">$</span> echo <span class="va">$((</span><span class="dv">996</span><span class="op">/</span><span class="dv">4</span><span class="va">))</span></span></code></pre>
 </div>
 <p>Note, this will do integer division - if you need floating point
 arithmetic you can use <a href="https://www.gnu.org/software/bc/manual/html_mono/bc.html" class="external-link">bc - an
 arbitrary precision calculator</a></p>
-<div class="codewrapper sourceCode" id="cb16">
+<div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">"996/4"</span> <span class="kw">|</span> <span class="fu">bc</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">"996/4"</span> <span class="kw">|</span> <span class="fu">bc</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2666,11 +2715,11 @@ consecutive Ns?</p>
 </button>
 <div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb18">
+<div class="codewrapper sourceCode" id="cb21">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="ex">$</span> grep NNN SRR098026.fastq <span class="op">&gt;</span> bad_reads.txt</span>
-<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a><span class="ex">$</span> wc <span class="at">-l</span> bad_reads.txt</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="ex">$</span> grep NNN SRR098026.fastq <span class="op">&gt;</span> bad_reads.txt</span>
+<span id="cb21-2"><a href="#cb21-2" tabindex="-1"></a><span class="ex">$</span> wc <span class="at">-l</span> bad_reads.txt</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2688,22 +2737,22 @@ output will replace the output that was already present in the file.
 This is called “overwriting” and, just like you don’t want to overwrite
 your video recording of your kid’s first birthday party, you also want
 to avoid overwriting your data files.</p>
-<div class="codewrapper sourceCode" id="cb20">
+<div class="codewrapper sourceCode" id="cb23">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-B1</span> <span class="at">-A2</span> NNNNNNNNNN SRR098026.fastq <span class="op">&gt;</span> bad_reads.txt</span>
-<span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a><span class="ex">$</span> wc <span class="at">-l</span> bad_reads.txt</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-B1</span> <span class="at">-A2</span> NNNNNNNNNN SRR098026.fastq <span class="op">&gt;</span> bad_reads.txt</span>
+<span id="cb23-2"><a href="#cb23-2" tabindex="-1"></a><span class="ex">$</span> wc <span class="at">-l</span> bad_reads.txt</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="output" tabindex="0"><code>537 bad_reads.txt</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb22">
+<div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-B1</span> <span class="at">-A2</span> NNNNNNNNNN SRR097977.fastq <span class="op">&gt;</span> bad_reads.txt</span>
-<span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a><span class="ex">$</span> wc <span class="at">-l</span> bad_reads.txt</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-B1</span> <span class="at">-A2</span> NNNNNNNNNN SRR097977.fastq <span class="op">&gt;</span> bad_reads.txt</span>
+<span id="cb25-2"><a href="#cb25-2" tabindex="-1"></a><span class="ex">$</span> wc <span class="at">-l</span> bad_reads.txt</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2719,22 +2768,22 @@ overwritten and is now empty.</p>
 <code>&gt;&gt;</code>. <code>&gt;&gt;</code> is known as the “append
 redirect” and will append new output to the end of a file, rather than
 overwriting it.</p>
-<div class="codewrapper sourceCode" id="cb24">
+<div class="codewrapper sourceCode" id="cb27">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-B1</span> <span class="at">-A2</span> NNNNNNNNNN SRR098026.fastq <span class="op">&gt;</span> bad_reads.txt</span>
-<span id="cb24-2"><a href="#cb24-2" tabindex="-1"></a><span class="ex">$</span> wc <span class="at">-l</span> bad_reads.txt</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-B1</span> <span class="at">-A2</span> NNNNNNNNNN SRR098026.fastq <span class="op">&gt;</span> bad_reads.txt</span>
+<span id="cb27-2"><a href="#cb27-2" tabindex="-1"></a><span class="ex">$</span> wc <span class="at">-l</span> bad_reads.txt</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="output" tabindex="0"><code>537 bad_reads.txt</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb26">
+<div class="codewrapper sourceCode" id="cb29">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-B1</span> <span class="at">-A2</span> NNNNNNNNNN SRR097977.fastq <span class="op">&gt;&gt;</span> bad_reads.txt</span>
-<span id="cb26-2"><a href="#cb26-2" tabindex="-1"></a><span class="ex">$</span> wc <span class="at">-l</span> bad_reads.txt</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-B1</span> <span class="at">-A2</span> NNNNNNNNNN SRR097977.fastq <span class="op">&gt;&gt;</span> bad_reads.txt</span>
+<span id="cb29-2"><a href="#cb29-2" tabindex="-1"></a><span class="ex">$</span> wc <span class="at">-l</span> bad_reads.txt</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2745,11 +2794,11 @@ overwriting it.</p>
 not overwritten our original data.</p>
 <p>We can also do this with a single line of code by using a
 wildcard:</p>
-<div class="codewrapper sourceCode" id="cb28">
+<div class="codewrapper sourceCode" id="cb31">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-B1</span> <span class="at">-A2</span> NNNNNNNNNN <span class="pp">*</span>.fastq <span class="op">&gt;</span> bad_reads.txt</span>
-<span id="cb28-2"><a href="#cb28-2" tabindex="-1"></a><span class="ex">$</span> wc <span class="at">-l</span> bad_reads.txt</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-B1</span> <span class="at">-A2</span> NNNNNNNNNN <span class="pp">*</span>.fastq <span class="op">&gt;</span> bad_reads.txt</span>
+<span id="cb31-2"><a href="#cb31-2" tabindex="-1"></a><span class="ex">$</span> wc <span class="at">-l</span> bad_reads.txt</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2770,10 +2819,10 @@ with a <code>.fastq</code> extension. If we already had a file called
 practice) and then ran the command above using a <code>.fastq</code>
 extension instead of a <code>.txt</code> extension, <code>grep</code>
 would give us a warning.</p>
-<div class="codewrapper sourceCode" id="cb30">
+<div class="codewrapper sourceCode" id="cb33">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-B1</span> <span class="at">-A2</span> NNNNNNNNNN <span class="pp">*</span>.fastq <span class="op">&gt;</span> bad_reads.fastq</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-B1</span> <span class="at">-A2</span> NNNNNNNNNN <span class="pp">*</span>.fastq <span class="op">&gt;</span> bad_reads.fastq</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2806,10 +2855,10 @@ output was scrolling by, we might have wished we could slow it down and
 look at it, like we can with <code>less</code>. Well it turns out that
 we can! We can redirect our output from our <code>grep</code> call
 through the <code>less</code> command.</p>
-<div class="codewrapper sourceCode" id="cb32">
+<div class="codewrapper sourceCode" id="cb35">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-B1</span> <span class="at">-A2</span> NNNNNNNNNN SRR098026.fastq <span class="kw">|</span> <span class="fu">less</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-B1</span> <span class="at">-A2</span> NNNNNNNNNN SRR098026.fastq <span class="kw">|</span> <span class="fu">less</span></span></code></pre>
 </div>
 <p>We can now see the output from our <code>grep</code> call within the
 <code>less</code> interface. We can use the up and down arrows to scroll
@@ -2819,10 +2868,10 @@ from our <code>grep</code> search, we could directly pipe the output of
 the grep search to the command <code>wc -l</code>. This can be helpful
 for investigating your output if you are not sure you would like to save
 it to a file.</p>
-<div class="codewrapper sourceCode" id="cb33">
+<div class="codewrapper sourceCode" id="cb36">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-B1</span> <span class="at">-A2</span> NNNNNNNNNN SRR098026.fastq <span class="kw">|</span> <span class="fu">wc</span> <span class="at">-l</span> </span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-B1</span> <span class="at">-A2</span> NNNNNNNNNN SRR098026.fastq <span class="kw">|</span> <span class="fu">wc</span> <span class="at">-l</span> </span></code></pre>
 </div>
 <p>Because we asked <code>grep</code> for all four lines of each FASTQ
 record, we need to divide the output by four to get the number of
@@ -2833,11 +2882,11 @@ missing in <code>bad_reads.txt</code>. If we explore
 notice what is causing the uneven number of lines. Luckily, this issue
 happens by the end of the file so we can also spot it with
 <code>tail</code>.</p>
-<div class="codewrapper sourceCode" id="cb34">
+<div class="codewrapper sourceCode" id="cb37">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-B1</span> <span class="at">-A2</span> NNNNNNNNNN SRR098026.fastq <span class="op">&gt;</span> bad_reads.txt</span>
-<span id="cb34-2"><a href="#cb34-2" tabindex="-1"></a><span class="ex">$</span> tail bad_reads.txt</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-B1</span> <span class="at">-A2</span> NNNNNNNNNN SRR098026.fastq <span class="op">&gt;</span> bad_reads.txt</span>
+<span id="cb37-2"><a href="#cb37-2" tabindex="-1"></a><span class="ex">$</span> tail bad_reads.txt</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2858,11 +2907,11 @@ default action for <code>grep</code> to separate groups of lines
 matching the pattern, and indicate groups of lines which did not match
 the pattern so are not displayed. To fix this issue, we can redirect the
 output of grep to a second instance of <code>grep</code> as follows.</p>
-<div class="codewrapper sourceCode" id="cb36">
+<div class="codewrapper sourceCode" id="cb39">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-B1</span> <span class="at">-A2</span> NNNNNNNNNN SRR098026.fastq <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-v</span> <span class="st">'^--'</span> <span class="op">&gt;</span> bad_reads.fastq</span>
-<span id="cb36-2"><a href="#cb36-2" tabindex="-1"></a><span class="ex">$</span> tail bad_reads.fastq</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-B1</span> <span class="at">-A2</span> NNNNNNNNNN SRR098026.fastq <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-v</span> <span class="st">'^--'</span> <span class="op">&gt;</span> bad_reads.fastq</span>
+<span id="cb39-2"><a href="#cb39-2" tabindex="-1"></a><span class="ex">$</span> tail bad_reads.fastq</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2946,14 +2995,14 @@ programming, this is usually called “expanding” the variable.</p>
 right. Suppose we have a variable named <code>foo</code> that contains
 the text <code>abc</code>, and would like to expand <code>foo</code> to
 create the text <code>abcEFG</code>.</p>
-<div class="codewrapper sourceCode" id="cb38">
+<div class="codewrapper sourceCode" id="cb41">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" tabindex="-1"></a><span class="ex">$</span> foo=abc</span>
-<span id="cb38-2"><a href="#cb38-2" tabindex="-1"></a><span class="ex">$</span> echo foo is <span class="va">$foo</span></span>
-<span id="cb38-3"><a href="#cb38-3" tabindex="-1"></a><span class="ex">foo</span> is abc</span>
-<span id="cb38-4"><a href="#cb38-4" tabindex="-1"></a><span class="ex">$</span> echo foo is <span class="va">$fooEFG</span>      <span class="co"># doesn't work</span></span>
-<span id="cb38-5"><a href="#cb38-5" tabindex="-1"></a><span class="ex">foo</span> is</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb41-1"><a href="#cb41-1" tabindex="-1"></a><span class="ex">$</span> foo=abc</span>
+<span id="cb41-2"><a href="#cb41-2" tabindex="-1"></a><span class="ex">$</span> echo foo is <span class="va">$foo</span></span>
+<span id="cb41-3"><a href="#cb41-3" tabindex="-1"></a><span class="ex">foo</span> is abc</span>
+<span id="cb41-4"><a href="#cb41-4" tabindex="-1"></a><span class="ex">$</span> echo foo is <span class="va">$fooEFG</span>      <span class="co"># doesn't work</span></span>
+<span id="cb41-5"><a href="#cb41-5" tabindex="-1"></a><span class="ex">foo</span> is</span></code></pre>
 </div>
 <p>The interpreter is trying to expand a variable named
 <code>fooEFG</code>, which (probably) doesn’t exist. We can avoid this
@@ -2962,14 +3011,14 @@ problem by enclosing the variable name in braces (<code>{</code> and
 the <code>#</code> character as a comment character. Any text on a line
 after a <code>#</code> is ignored by bash when evaluating the text as
 code.</p>
-<div class="codewrapper sourceCode" id="cb39">
+<div class="codewrapper sourceCode" id="cb42">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" tabindex="-1"></a><span class="ex">$</span> foo=abc</span>
-<span id="cb39-2"><a href="#cb39-2" tabindex="-1"></a><span class="ex">$</span> echo foo is <span class="va">$foo</span></span>
-<span id="cb39-3"><a href="#cb39-3" tabindex="-1"></a><span class="ex">foo</span> is abc</span>
-<span id="cb39-4"><a href="#cb39-4" tabindex="-1"></a><span class="ex">$</span> echo foo is <span class="va">${foo}</span>EFG      <span class="co"># now it works!</span></span>
-<span id="cb39-5"><a href="#cb39-5" tabindex="-1"></a><span class="ex">foo</span> is abcEFG</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb42-1"><a href="#cb42-1" tabindex="-1"></a><span class="ex">$</span> foo=abc</span>
+<span id="cb42-2"><a href="#cb42-2" tabindex="-1"></a><span class="ex">$</span> echo foo is <span class="va">$foo</span></span>
+<span id="cb42-3"><a href="#cb42-3" tabindex="-1"></a><span class="ex">foo</span> is abc</span>
+<span id="cb42-4"><a href="#cb42-4" tabindex="-1"></a><span class="ex">$</span> echo foo is <span class="va">${foo}</span>EFG      <span class="co"># now it works!</span></span>
+<span id="cb42-5"><a href="#cb42-5" tabindex="-1"></a><span class="ex">foo</span> is abcEFG</span></code></pre>
 </div>
 <p>Let’s write a for loop to show us the first two lines of the fastq
 files we downloaded earlier. You will notice the shell prompt changes
@@ -2978,18 +3027,13 @@ typing in our loop. The second prompt, <code>&gt;</code>, is different
 to remind us that we haven’t finished typing a complete command yet. A
 semicolon, <code>;</code>, can be used to separate two commands written
 on a single line.</p>
-<div class="codewrapper sourceCode" id="cb40">
+<div class="codewrapper sourceCode" id="cb43">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" tabindex="-1"></a><span class="ex">$</span> cd ../untrimmed_fastq/</span></code></pre>
-</div>
-<div class="codewrapper sourceCode" id="cb41">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb41-1"><a href="#cb41-1" tabindex="-1"></a><span class="ex">$</span> for filename in <span class="pp">*</span>.fastq</span>
-<span id="cb41-2"><a href="#cb41-2" tabindex="-1"></a><span class="op">&gt;</span> do</span>
-<span id="cb41-3"><a href="#cb41-3" tabindex="-1"></a><span class="op">&gt;</span> head <span class="ex">-n</span> 2 <span class="va">${filename}</span></span>
-<span id="cb41-4"><a href="#cb41-4" tabindex="-1"></a><span class="op">&gt;</span> done</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb43-1"><a href="#cb43-1" tabindex="-1"></a><span class="ex">$</span> for filename in <span class="pp">*</span>.fastq</span>
+<span id="cb43-2"><a href="#cb43-2" tabindex="-1"></a><span class="op">&gt;</span> do</span>
+<span id="cb43-3"><a href="#cb43-3" tabindex="-1"></a><span class="op">&gt;</span> head <span class="ex">-n</span> 2 <span class="va">${filename}</span></span>
+<span id="cb43-4"><a href="#cb43-4" tabindex="-1"></a><span class="op">&gt;</span> done</span></code></pre>
 </div>
 <p>The for loop begins with the formula
 <code>for &lt;variable&gt; in &lt;group to iterate over&gt;</code>. In
@@ -3004,13 +3048,13 @@ iterate over. Finally, the word <code>done</code> ends the loop.</p>
 <p>After executing the loop, you should see the first two lines of both
 fastq files printed to the terminal. Let’s create a loop that will save
 this information to a file.</p>
-<div class="codewrapper sourceCode" id="cb42">
+<div class="codewrapper sourceCode" id="cb44">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb42-1"><a href="#cb42-1" tabindex="-1"></a><span class="ex">$</span> for filename in <span class="pp">*</span>.fastq</span>
-<span id="cb42-2"><a href="#cb42-2" tabindex="-1"></a><span class="op">&gt;</span> do</span>
-<span id="cb42-3"><a href="#cb42-3" tabindex="-1"></a><span class="op">&gt;</span> head <span class="ex">-n</span> 2 <span class="va">${filename}</span> <span class="op">&gt;&gt;</span> seq_info.txt</span>
-<span id="cb42-4"><a href="#cb42-4" tabindex="-1"></a><span class="op">&gt;</span> done</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb44-1"><a href="#cb44-1" tabindex="-1"></a><span class="ex">$</span> for filename in <span class="pp">*</span>.fastq</span>
+<span id="cb44-2"><a href="#cb44-2" tabindex="-1"></a><span class="op">&gt;</span> do</span>
+<span id="cb44-3"><a href="#cb44-3" tabindex="-1"></a><span class="op">&gt;</span> head <span class="ex">-n</span> 2 <span class="va">${filename}</span> <span class="op">&gt;&gt;</span> seq_info.txt</span>
+<span id="cb44-4"><a href="#cb44-4" tabindex="-1"></a><span class="op">&gt;</span> done</span></code></pre>
 </div>
 <p>When writing a loop, you will not be able to return to previous lines
 once you have pressed Enter. Remember that we can cancel the current
@@ -3034,10 +3078,10 @@ Instead, <code>&gt;&gt;</code> adds to the end of the file.</p>
 part of a name from a list of files. In this case, we will use basename
 to remove the <code>.fastq</code> extension from the files that we’ve
 been working with.</p>
-<div class="codewrapper sourceCode" id="cb43">
+<div class="codewrapper sourceCode" id="cb45">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb43-1"><a href="#cb43-1" tabindex="-1"></a><span class="ex">$</span> basename SRR097977.fastq .fastq</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb45-1"><a href="#cb45-1" tabindex="-1"></a><span class="ex">$</span> basename SRR097977.fastq .fastq</span></code></pre>
 </div>
 <p>We see that this returns just the SRR accession, and no longer has
 the .fastq file extension on it.</p>
@@ -3049,10 +3093,10 @@ the .fastq file extension on it.</p>
 <p>If we try the same thing but use <code>.fasta</code> as the file
 extension instead, nothing happens. This is because basename only works
 when it exactly matches a string in the file.</p>
-<div class="codewrapper sourceCode" id="cb45">
+<div class="codewrapper sourceCode" id="cb47">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb45-1"><a href="#cb45-1" tabindex="-1"></a><span class="ex">$</span> basename SRR097977.fastq .fasta</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb47-1"><a href="#cb47-1" tabindex="-1"></a><span class="ex">$</span> basename SRR097977.fastq .fasta</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3071,14 +3115,14 @@ creating a new variable called name. The line &gt; echo $name will print
 to the terminal the variable name each time the for loop runs. Because
 we are iterating over two files, we expect to see two lines of
 output.</p>
-<div class="codewrapper sourceCode" id="cb47">
+<div class="codewrapper sourceCode" id="cb49">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb47-1"><a href="#cb47-1" tabindex="-1"></a><span class="ex">$</span> for filename in <span class="pp">*</span>.fastq</span>
-<span id="cb47-2"><a href="#cb47-2" tabindex="-1"></a><span class="op">&gt;</span> do</span>
-<span id="cb47-3"><a href="#cb47-3" tabindex="-1"></a><span class="op">&gt;</span> name=<span class="va">$(</span><span class="fu">basename</span> <span class="va">${filename}</span> .fastq<span class="va">)</span></span>
-<span id="cb47-4"><a href="#cb47-4" tabindex="-1"></a><span class="op">&gt;</span> echo <span class="va">${name}</span></span>
-<span id="cb47-5"><a href="#cb47-5" tabindex="-1"></a><span class="op">&gt;</span> done</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb49-1"><a href="#cb49-1" tabindex="-1"></a><span class="ex">$</span> for filename in <span class="pp">*</span>.fastq</span>
+<span id="cb49-2"><a href="#cb49-2" tabindex="-1"></a><span class="op">&gt;</span> do</span>
+<span id="cb49-3"><a href="#cb49-3" tabindex="-1"></a><span class="op">&gt;</span> name=<span class="va">$(</span><span class="fu">basename</span> <span class="va">${filename}</span> .fastq<span class="va">)</span></span>
+<span id="cb49-4"><a href="#cb49-4" tabindex="-1"></a><span class="op">&gt;</span> echo <span class="va">${name}</span></span>
+<span id="cb49-5"><a href="#cb49-5" tabindex="-1"></a><span class="op">&gt;</span> done</span></code></pre>
 </div>
 <div id="exercise-3" class="callout challenge">
 <div class="callout-square">
@@ -3100,14 +3144,14 @@ current directory.</p>
 </button>
 <div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb48">
+<div class="codewrapper sourceCode" id="cb50">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb48-1"><a href="#cb48-1" tabindex="-1"></a><span class="ex">$</span> for filename in <span class="pp">*</span>.txt</span>
-<span id="cb48-2"><a href="#cb48-2" tabindex="-1"></a><span class="op">&gt;</span> do</span>
-<span id="cb48-3"><a href="#cb48-3" tabindex="-1"></a><span class="op">&gt;</span> name=<span class="va">$(</span><span class="fu">basename</span> <span class="va">${filename}</span> .txt<span class="va">)</span></span>
-<span id="cb48-4"><a href="#cb48-4" tabindex="-1"></a><span class="op">&gt;</span> echo <span class="va">${name}</span></span>
-<span id="cb48-5"><a href="#cb48-5" tabindex="-1"></a><span class="op">&gt;</span> done</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb50-1"><a href="#cb50-1" tabindex="-1"></a><span class="ex">$</span> for filename in <span class="pp">*</span>.txt</span>
+<span id="cb50-2"><a href="#cb50-2" tabindex="-1"></a><span class="op">&gt;</span> do</span>
+<span id="cb50-3"><a href="#cb50-3" tabindex="-1"></a><span class="op">&gt;</span> name=<span class="va">$(</span><span class="fu">basename</span> <span class="va">${filename}</span> .txt<span class="va">)</span></span>
+<span id="cb50-4"><a href="#cb50-4" tabindex="-1"></a><span class="op">&gt;</span> echo <span class="va">${name}</span></span>
+<span id="cb50-5"><a href="#cb50-5" tabindex="-1"></a><span class="op">&gt;</span> done</span></code></pre>
 </div>
 </div>
 </div>
@@ -3116,14 +3160,14 @@ current directory.</p>
 <p>One way this is really useful is to move files. Let’s rename all of
 our .txt files using <code>mv</code> so that they have the years on
 them, which will document when we created them.</p>
-<div class="codewrapper sourceCode" id="cb49">
+<div class="codewrapper sourceCode" id="cb51">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb49-1"><a href="#cb49-1" tabindex="-1"></a><span class="ex">$</span> for filename in <span class="pp">*</span>.txt</span>
-<span id="cb49-2"><a href="#cb49-2" tabindex="-1"></a><span class="op">&gt;</span> do</span>
-<span id="cb49-3"><a href="#cb49-3" tabindex="-1"></a><span class="op">&gt;</span> name=<span class="va">$(</span><span class="fu">basename</span> <span class="va">${filename}</span> .txt<span class="va">)</span></span>
-<span id="cb49-4"><a href="#cb49-4" tabindex="-1"></a><span class="op">&gt;</span> mv <span class="va">${filename}</span>  <span class="va">${name}</span>_2019.txt</span>
-<span id="cb49-5"><a href="#cb49-5" tabindex="-1"></a><span class="op">&gt;</span> done</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb51-1"><a href="#cb51-1" tabindex="-1"></a><span class="ex">$</span> for filename in <span class="pp">*</span>.txt</span>
+<span id="cb51-2"><a href="#cb51-2" tabindex="-1"></a><span class="op">&gt;</span> do</span>
+<span id="cb51-3"><a href="#cb51-3" tabindex="-1"></a><span class="op">&gt;</span> name=<span class="va">$(</span><span class="fu">basename</span> <span class="va">${filename}</span> .txt<span class="va">)</span></span>
+<span id="cb51-4"><a href="#cb51-4" tabindex="-1"></a><span class="op">&gt;</span> mv <span class="va">${filename}</span>  <span class="va">${name}</span>_2019.txt</span>
+<span id="cb51-5"><a href="#cb51-5" tabindex="-1"></a><span class="op">&gt;</span> done</span></code></pre>
 </div>
 <div id="exercise-4" class="callout challenge">
 <div class="callout-square">
@@ -3145,14 +3189,14 @@ files.</p>
 </button>
 <div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb50">
+<div class="codewrapper sourceCode" id="cb52">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb50-1"><a href="#cb50-1" tabindex="-1"></a><span class="ex">$</span> for filename in <span class="pp">*</span>_2019.txt</span>
-<span id="cb50-2"><a href="#cb50-2" tabindex="-1"></a><span class="op">&gt;</span> do</span>
-<span id="cb50-3"><a href="#cb50-3" tabindex="-1"></a><span class="op">&gt;</span> name=<span class="va">$(</span><span class="fu">basename</span> <span class="va">${filename}</span> _2019.txt<span class="va">)</span></span>
-<span id="cb50-4"><a href="#cb50-4" tabindex="-1"></a><span class="op">&gt;</span> mv <span class="va">${filename}</span> <span class="va">${name}</span>.txt</span>
-<span id="cb50-5"><a href="#cb50-5" tabindex="-1"></a><span class="op">&gt;</span> done</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb52-1"><a href="#cb52-1" tabindex="-1"></a><span class="ex">$</span> for filename in <span class="pp">*</span>_2019.txt</span>
+<span id="cb52-2"><a href="#cb52-2" tabindex="-1"></a><span class="op">&gt;</span> do</span>
+<span id="cb52-3"><a href="#cb52-3" tabindex="-1"></a><span class="op">&gt;</span> name=<span class="va">$(</span><span class="fu">basename</span> <span class="va">${filename}</span> _2019.txt<span class="va">)</span></span>
+<span id="cb52-4"><a href="#cb52-4" tabindex="-1"></a><span class="op">&gt;</span> mv <span class="va">${filename}</span> <span class="va">${name}</span>.txt</span>
+<span id="cb52-5"><a href="#cb52-5" tabindex="-1"></a><span class="op">&gt;</span> done</span></code></pre>
 </div>
 </div>
 </div>
@@ -3196,7 +3240,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-05-writing-scripts"><p>Content from <a href="05-writing-scripts.html">Writing Scripts and Working with Data</a></p>
 <hr>
-<p>Last updated on 2024-04-21 |
+<p>Last updated on 2024-06-18 |
         
         <a href="https://github.com/jlchang/2024-06-21-unix-shell-lesson/edit/main/episodes/05-writing-scripts.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -3257,20 +3301,19 @@ FASTA file, but we’ll see as we go through other tutorials, there are a
 lot of reasons we’ll want to write a file, or edit an existing file.</p>
 <p>To add text to files, we’re going to use a text editor called Nano.
 We’re going to create a file to take notes about what we’ve been doing
-with the data files in <code>~/shell_data/untrimmed_fastq</code>.</p>
+with the data files in <code>~/untrimmed_fastq</code>.</p>
 <p>This is good practice when working in bioinformatics. We can create a
 file called <code>README.txt</code> that describes the data files in the
 directory or documents how the files in that directory were generated.
 As the name suggests, it’s a file that we or others should read to
 understand the information in that directory.</p>
-<p>Let’s change our working directory to
-<code>~/shell_data/untrimmed_fastq</code> using <code>cd</code>, then
-run <code>nano</code> to create a file called
-<code>README.txt</code>:</p>
+<p>Let’s change our working directory to <code>~/untrimmed_fastq</code>
+using <code>cd</code>, then run <code>nano</code> to create a file
+called <code>README.txt</code>:</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="ex">$</span> cd ~/shell_data/untrimmed_fastq</span>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="ex">$</span> cd ~/untrimmed_fastq</span>
 <span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="ex">$</span> nano README.txt</span></code></pre>
 </div>
 <p>You should see something like this:</p>
@@ -3366,7 +3409,7 @@ and save the file.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">Show me the solution</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>Use <code>nano README.txt</code> to open the file.<br>
 Add today’s date and then use <kbd>Ctrl</kbd>-<kbd>X</kbd> followed by
@@ -3459,7 +3502,7 @@ and save the file.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2">Show me the solution</h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <pre><code>$ bash bad-reads-script.sh
 Script finished!</code></pre>
@@ -3484,14 +3527,15 @@ by changing the file permissions. We talked about permissions in <a href="03-wor
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>-rw-r--r-- 1 dcuser dcuser 0 Oct 25 21:46 bad-reads-script.sh</code></pre>
+<pre class="output" tabindex="0"><code>-rw-rw-r-- 1 jlchang sequence 76 Jun 18 13:33 bad-reads-script.sh</code></pre>
 </div>
 <p>We see that it says <code>-rw-r--r--</code>. This shows that the file
-can be read by any user and written to by the file owner (you). We want
-to change these permissions so that the file can be executed as a
-program. We use the command <code>chmod</code> like we did earlier when
-we removed write permissions. Here we are adding (<code>+</code>)
-executable permissions (<code>+x</code>).</p>
+can be read by any user and written to by the file owner (you) and
+anyone in the <code>sequence</code> group. We want to change these
+permissions so that the file can be executed as a program. We use the
+command <code>chmod</code> like we did earlier when we removed write
+permissions. Here we are adding (<code>+</code>) executable permissions
+(<code>+x</code>).</p>
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -3506,9 +3550,9 @@ executable permissions (<code>+x</code>).</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>-rwxr-xr-x 1 dcuser dcuser 0 Oct 25 21:46 bad-reads-script.sh</code></pre>
+<pre class="output" tabindex="0"><code>-rwxrwxr-x 1 jlchang sequence 76 Jun 18 13:33 bad-reads-script.sh</code></pre>
 </div>
-<p>Now we see that it says <code>-rwxr-xr-x</code>. The <code>x</code>’s
+<p>Now we see that it says <code>-rwxrwxr-x</code>. The <code>x</code>’s
 that are there now tell us we can run it as a program. So, let’s try it!
 We’ll need to put <code>./</code> at the beginning so the computer knows
 to look here in this directory for the program.</p>
@@ -3610,20 +3654,22 @@ file using the same name it had on the server:
 species_EnsemblBacteria.txt</p>
 <p>It’s important to note that both <code>curl</code> and
 <code>wget</code> download to the computer that the command line belongs
-to. So, if you are logged into AWS on the command line and execute the
-<code>curl</code> command above in the AWS terminal, the file will be
-downloaded to your AWS machine, not your local one.</p>
+to. So, if you are logged into a remote server on the command line and
+execute the <code>curl</code> command above in the terminal for the
+remote machine, the file will be downloaded to the remote machine, not
+your local one.</p>
 </div>
 <div class="section level3">
 <h3 id="moving-files-between-your-laptop-and-your-instance">Moving files between your laptop and your instance<a class="anchor" aria-label="anchor" href="#moving-files-between-your-laptop-and-your-instance"></a>
 </h3>
 <p>What if the data you need is on your local computer, but you need to
-get it <em>into</em> the cloud? There are also several ways to do this,
-but it’s <em>always</em> easier to start the transfer locally.
-<strong>This means if you’re typing into a terminal, the terminal should
-not be logged into your instance, it should be showing your local
-computer. If you’re using a transfer program, it needs to be installed
-on your local machine, not your instance.</strong></p>
+get it <em>into</em> the remote server (or a cloud server)? There are
+also several ways to do this, but it’s <em>always</em> easier to start
+the transfer locally. <strong>This means if you’re typing into a
+terminal, the terminal should not be logged into your instance, it
+should be showing your local computer. If you’re using a transfer
+program, it needs to be installed on your local machine, not your
+instance.</strong></p>
 </div>
 </section><section id="transferring-data-between-your-local-machine-and-the-cloud"><h2 class="section-heading">Transferring Data Between your Local Machine and the Cloud<a class="anchor" aria-label="anchor" href="#transferring-data-between-your-local-machine-and-the-cloud"></a>
 </h2>
@@ -3637,7 +3683,7 @@ machine.</p>
   <h3 class="accordion-header" id="headingSpoiler1">
 <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>SCP</h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
 <div class="accordion-body">
 <p><code>scp</code> stands for ‘secure copy protocol’, and is a widely
 used UNIX tool for moving files between computers. The simplest way to
@@ -3655,14 +3701,14 @@ instance, the command would look like this:</p>
 <div class="codewrapper sourceCode" id="cb20">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="ex">$</span> scp <span class="op">&lt;</span>local file<span class="op">&gt;</span> <span class="op">&lt;</span>AWS instance<span class="op">&gt;</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="ex">$</span> scp <span class="op">&lt;</span>local file<span class="op">&gt;</span> <span class="op">&lt;</span>remote instance<span class="op">&gt;</span></span></code></pre>
 </div>
 <p>To move it back to your local computer, you re-order the
 <code>to</code> and <code>from</code> fields:</p>
 <div class="codewrapper sourceCode" id="cb21">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="ex">$</span> scp <span class="op">&lt;</span>AWS instance<span class="op">&gt;</span> <span class="op">&lt;</span>local file<span class="op">&gt;</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="ex">$</span> scp <span class="op">&lt;</span>remote instance<span class="op">&gt;</span> <span class="op">&lt;</span>local file<span class="op">&gt;</span></span></code></pre>
 </div>
 <div class="section level4">
 <h4 id="uploading-data-to-your-virtual-machine-with-scp">Uploading Data to your Virtual Machine with scp<a class="anchor" aria-label="anchor" href="#uploading-data-to-your-virtual-machine-with-scp"></a>
@@ -3672,8 +3718,11 @@ file (e.g. local_file.txt) to the dcuser home directory:</p>
 <div class="codewrapper sourceCode" id="cb22">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a><span class="ex">$</span>  scp local_file.txt dcuser@ip.address:/home/dcuser/</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a><span class="ex">$</span>  scp local_file.txt <span class="op">&lt;</span>username<span class="op">&gt;</span>@remote.server.address:~/</span></code></pre>
 </div>
+<p>At Broad, remote servers used for data transfer are
+xfer1.broadinstitute.org, xfer2.broadinstitute.org and
+xfer3.broadinstitute.org</p>
 </div>
 <div class="section level4">
 <h4 id="downloading-data-from-your-virtual-machine-with-scp">Downloading Data from your Virtual Machine with scp<a class="anchor" aria-label="anchor" href="#downloading-data-from-your-virtual-machine-with-scp"></a>
@@ -3688,14 +3737,15 @@ text file in your home directory to use instead, try:</p>
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a><span class="ex">$</span> find ~ <span class="at">-name</span> <span class="pp">*</span>.txt</span></code></pre>
 </div>
-<p>Download the bad reads file in ~/shell_data/scripted_bad_reads.txt to
-your home ~/Download directory using the following command <strong>(make
-sure you substitute <a href="mailto:dcuser@ip.address">dcuser@ip.address</a> with your remote
-login credentials)</strong>:</p>
+<p>Download the bad reads file in
+~/untrimmed_fastq/scripted_bad_reads.txt to your home ~/Download
+directory using the following command <strong>(make sure you substitute
+<username><span class="citation">@remote.server.address</span> with your
+remote login credentials)</username></strong>:</p>
 <div class="codewrapper sourceCode" id="cb24">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a><span class="ex">$</span> scp dcuser@ip.address:/home/dcuser/shell_data/untrimmed_fastq/scripted_bad_reads.txt ~/Downloads</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a><span class="ex">$</span> scp <span class="op">&lt;</span>username<span class="op">&gt;</span>@remote.server.address:~/untrimmed_fastq/scripted_bad_reads.txt ~/Downloads</span></code></pre>
 </div>
 <p>Remember that in both instances, the command is run from your local
 machine, we’ve just flipped the order of the to and from parts of the
@@ -3714,7 +3764,7 @@ machine.</p>
   <h3 class="accordion-header" id="headingSpoiler2">
 <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>PCSP</h3>
 </button>
-<div id="collapseSpoiler2" class="accordion-collapse collapse" aria-labelledby="headingSpoiler2" data-bs-parent="#accordionSpoiler2">
+<div id="collapseSpoiler2" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler2" aria-labelledby="headingSpoiler2">
 <div class="accordion-body">
 <p>If you’re using a Windows PC without Git Bash, we recommend you use
 the <em>PSCP</em> program. This program is from the same suite of tools
@@ -3741,15 +3791,14 @@ know the path). Then upload it to your remote machine <strong>(you will
 need to know your AMI instance address (which starts with ec2), and
 login credentials)</strong>. You will be prompted to enter a password,
 and then your upload will begin. <strong>(make sure you substitute
-‘your-pc-username’ for your actual pc username and
-‘ec2-54-88-126-85.compute-1.amazonaws.com’ with your AMI instance
-address)</strong>
+‘your-pc-username’ for your actual pc username and ‘<username><span class="citation">@remote.server.address</span>’ with your username and a
+Broad data transfer server address)</username></strong>
 </li>
 </ol>
 <div class="codewrapper sourceCode" id="cb26">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a><span class="ex">C:\User\your-pc-username\Downloads</span><span class="op">&gt;</span> pscp.exe local_file.txt dcuser@ec2-54-88-126-85.compute-1.amazonaws.com:/home/dcuser/</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a><span class="ex">C:\User\your-pc-username\Downloads</span><span class="op">&gt;</span> pscp.exe local_file.txt <span class="op">&lt;</span>username<span class="op">&gt;</span>@remote.server.address:~/</span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="downloading-data-from-your-virtual-machine-with-pscp">Downloading Data from your Virtual Machine with PSCP<a class="anchor" aria-label="anchor" href="#downloading-data-from-your-virtual-machine-with-pscp"></a>
@@ -3760,14 +3809,14 @@ needed) and access the <em>PSCP</em> program (steps 1-3)</li>
 <li>Download the text file to your current working directory
 (represented by a .) using the following command <strong>(make sure you
 substitute ‘your-pc-username’ for your actual pc username and
-‘ec2-54-88-126-85.compute-1.amazonaws.com’ with your AMI instance
-address)</strong>
+‘<username><span class="citation">@remote.server.address</span>’ with
+your username and a Broad data transfer server address)</username></strong>
 </li>
 </ol>
 <div class="codewrapper sourceCode" id="cb27">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a><span class="ex">C:\User\your-pc-username\Downloads</span><span class="op">&gt;</span> pscp.exe dcuser@ec2-54-88-126-85.compute-1.amazonaws.com:/home/dcuser/shell_data/untrimmed_fastq/scripted_bad_reads.txt .</span>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a><span class="ex">C:\User\your-pc-username\Downloads</span><span class="op">&gt;</span> pscp.exe <span class="op">&lt;</span>username<span class="op">&gt;</span>@remote.server.address:~/untrimmed_fastq/scripted_bad_reads.txt .</span>
 <span id="cb27-2"><a href="#cb27-2" tabindex="-1"></a></span>
 <span id="cb27-3"><a href="#cb27-3" tabindex="-1"></a><span class="ex">C:\User\your-pc-username\Downloads</span></span></code></pre>
 </div>
@@ -3798,7 +3847,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-06-organization"><p>Content from <a href="06-organization.html">Project Organization</a></p>
 <hr>
-<p>Last updated on 2024-04-21 |
+<p>Last updated on 2024-06-18 |
         
         <a href="https://github.com/jlchang/2024-06-21-unix-shell-lesson/edit/main/episodes/06-organization.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -3896,7 +3945,7 @@ you are in the correct directory using the <code>pwd</code> command.</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>/home/dcuser  </code></pre>
+<pre class="output" tabindex="0"><code>/home/unix/&lt;username&gt;  </code></pre>
 </div>
 <div id="tip" class="callout">
 <div class="callout-square">
@@ -3936,7 +3985,7 @@ directories:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">Show me the solution</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3984,7 +4033,7 @@ to go back a step in the process. Having a raw copy of your data that
 you never modify guarantees that you will always be able to start over
 if something goes wrong with your analysis. When starting any analysis,
 you can make a copy of your raw data file and do your manipulations on
-that file, rather than the raw version. We learned in <a href="https://datacarpentry.org/shell-genomics/03-working-with-files#file-permissions" class="external-link">a
+that file, rather than the raw version. We learned in <a href="https://jlchang.github.io/2024-06-21-unix-shell-lesson/03-working-with-files.html#file-permissions" class="external-link">a
 previous episode</a> how to prevent overwriting our raw data files by
 setting restrictive file permissions.</p>
 <p>You can store any results that are generated from your analysis in
@@ -4038,7 +4087,7 @@ last 7:</p>
 <code>&gt;&gt;</code> to create a file called
 <code>dc_workshop_log_XXXX_XX_XX.sh</code> (Use the four-digit year,
 two-digit month, and two digit day, e.g.
-<code>dc_workshop_log_2017_10_27.sh</code>)</p>
+<code>dc_workshop_log_2024_06_24.sh</code>)</p>
 </div>
 </div>
 </div>
@@ -4047,12 +4096,12 @@ two-digit month, and two digit day, e.g.
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2">Show me the solution</h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="ex">$</span> history <span class="kw">|</span> <span class="fu">tail</span> <span class="at">-n</span> 7 <span class="op">&gt;&gt;</span> dc_workshop_log_2017_10_27.sh</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="ex">$</span> history <span class="kw">|</span> <span class="fu">tail</span> <span class="at">-n</span> 7 <span class="op">&gt;&gt;</span> dc_workshop_log_2024_06_24.sh</span></code></pre>
 </div>
 <p>Note we used the last 7 lines as an example, the number of lines may
 vary.</p>
@@ -4066,9 +4115,9 @@ log, let’s use the <code>nano</code> text editor to fix the file:</p>
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="ex">$</span> nano dc_workshop_log_2017_10_27.sh</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="ex">$</span> nano dc_workshop_log_2024_06_24.sh</span></code></pre>
 </div>
-<p>(Remember to replace the <code>2017_10_27</code> with your workshop
+<p>(Remember to replace the <code>2024_06_24</code> with your workshop
 date.)</p>
 <p>From the <code>nano</code> screen, you can use your cursor to
 navigate, type, and delete any redundant lines.</p>
@@ -4139,7 +4188,7 @@ ignored by bash when evaluating the text as code. For example:</p>
 <div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="co"># 2017_10_27   </span></span>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="co"># 2024_06_24   </span></span>
 <span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="co"># Created sample directories for the Data Carpentry workshop  </span></span></code></pre>
 </div>
 <p>Next, remove any lines of the history that are not relevant by
@@ -4149,7 +4198,7 @@ close <code>nano</code>.</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code># 2017_10_27
+<pre class="output" tabindex="0"><code># 2024_06_24 
 # Created sample directories for the Data Carpentry workshop
 
 mkdir dc_workshop
@@ -4171,7 +4220,7 @@ to verify the directory is gone.</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>shell_data	dc_workshop_log_2017_10_27.sh</code></pre>
+<pre class="output" tabindex="0"><code>shell_data	dc_workshop_log_2024_06_24.sh</code></pre>
 </div>
 <p>Then run your workshop log file as a bash script. You should see the
 <code>dc_workshop</code> directory and all of its subdirectories
@@ -4179,13 +4228,13 @@ reappear.</p>
 <div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="ex">$</span> bash dc_workshop_log_2017_10_27.sh</span>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="ex">$</span> bash dc_workshop_log_2024_06_24.sh</span>
 <span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a><span class="ex">$</span> ls</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>shell_data	dc_workshop dc_workshop_log_2017_10_27.sh</code></pre>
+<pre class="output" tabindex="0"><code>shell_data	dc_workshop dc_workshop_log_2024_06_24.sh</code></pre>
 </div>
 <p>It’s important that we keep our workshop log file outside of our
 <code>dc_workshop</code> directory if we want to use it to recreate our
