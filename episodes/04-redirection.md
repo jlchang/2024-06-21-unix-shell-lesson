@@ -200,7 +200,7 @@ If you see something similar to
 grep: SRR098026.fasta: No such file or directory
 ```
 
-grep is telling you it couldn't find the file you specified. Take a close look at the error message. We asked grep to look for a `fasta` file instead of `fastq`... No wonder grep was confused!
+grep is telling you it couldn't find the specified file. Take a close look at the error message. Grep was asked to look for a `fasta` file instead of `fastq`... No wonder grep was confused!
 
 
 ::::::::::::::::::::::::::::::::::::::::
