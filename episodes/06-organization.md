@@ -68,7 +68,7 @@ $ pwd
 You should see the output:
 
 ```output
-/home/dcuser  
+/home/unix/<username>  
 ```
 
 :::::::::::::::::::::::::::::::::::::::::  callout
@@ -139,7 +139,7 @@ your data that you never modify guarantees that you will always be
 able to start over if something goes wrong with your analysis. When
 starting any analysis, you can make a copy of your raw data file and
 do your manipulations on that file, rather than the raw version. We
-learned in [a previous episode](https://datacarpentry.org/shell-genomics/03-working-with-files#file-permissions) how to prevent overwriting our raw data
+learned in [a previous episode](https://jlchang.github.io/2024-06-21-unix-shell-lesson/03-working-with-files.html#file-permissions) how to prevent overwriting our raw data
 files by setting restrictive file permissions.
 
 You can store any results that are generated from your analysis in
@@ -186,14 +186,14 @@ $ history | tail -n 7
 
 Using your knowledge of the shell, use the append redirect `>>` to create a file called
 `dc_workshop_log_XXXX_XX_XX.sh` (Use the four-digit year, two-digit month, and two digit day, e.g.
-`dc_workshop_log_2017_10_27.sh`)
+`dc_workshop_log_2024_06_24.sh`)
 
 :::::::::::::::  solution
 
 ### Solution
 
 ```bash
-$ history | tail -n 7 >> dc_workshop_log_2017_10_27.sh
+$ history | tail -n 7 >> dc_workshop_log_2024_06_24.sh
 ```
 
 Note we used the last 7 lines as an example, the number of lines may vary.
@@ -206,10 +206,10 @@ You may have noticed that your history contains the `history` command itself. To
 from our log, let's use the `nano` text editor to fix the file:
 
 ```bash
-$ nano dc_workshop_log_2017_10_27.sh
+$ nano dc_workshop_log_2024_06_24.sh
 ```
 
-(Remember to replace the `2017_10_27` with your workshop date.)
+(Remember to replace the `2024_06_24` with your workshop date.)
 
 From the `nano` screen, you can use your cursor to navigate, type, and delete any redundant lines.
 
@@ -236,7 +236,7 @@ Add a date line and comment to the line where you have created the directory. Re
 text on a line after a `#` is ignored by bash when evaluating the text as code. For example:
 
 ```bash
-# 2017_10_27   
+# 2024_06_24   
 # Created sample directories for the Data Carpentry workshop  
 ```
 
@@ -246,7 +246,7 @@ delete key. Save your file and close `nano`.
 Your file should look something like this:
 
 ```output
-# 2017_10_27
+# 2024_06_24 
 # Created sample directories for the Data Carpentry workshop
 
 mkdir dc_workshop
@@ -265,19 +265,19 @@ $ ls
 ```
 
 ```output
-shell_data	dc_workshop_log_2017_10_27.sh
+shell_data	dc_workshop_log_2024_06_24.sh
 ```
 
 Then run your workshop log file as a bash script. You should see the `dc_workshop`
 directory and all of its subdirectories reappear.
 
 ```bash
-$ bash dc_workshop_log_2017_10_27.sh
+$ bash dc_workshop_log_2024_06_24.sh
 $ ls
 ```
 
 ```output
-shell_data	dc_workshop dc_workshop_log_2017_10_27.sh
+shell_data	dc_workshop dc_workshop_log_2024_06_24.sh
 ```
 
 It's important that we keep our workshop log file outside of our `dc_workshop` directory
