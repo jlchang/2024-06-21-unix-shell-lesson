@@ -265,7 +265,7 @@ $ ls
 ```
 
 ```output
-shell_data	dc_workshop_log_2024_06_24.sh
+untrimmed_fastq	dc_workshop_log_2024_06_24.sh
 ```
 
 Then run your workshop log file as a bash script. You should see the `dc_workshop`
@@ -277,7 +277,7 @@ $ ls
 ```
 
 ```output
-shell_data	dc_workshop dc_workshop_log_2024_06_24.sh
+untrimmed_fastq	dc_workshop dc_workshop_log_2024_06_24.sh
 ```
 
 It's important that we keep our workshop log file outside of our `dc_workshop` directory
