@@ -466,7 +466,6 @@ ANNNNNNNNNTTCAGCGACTNNNNNNNNNNGTNGN
 +SRR098026.133 HWUSI-EAS1599_1:2:1:0:1978 length=35
 #!!!!!!!!!##########!!!!!!!!!!##!#!
 --
---
 @SRR098026.177 HWUSI-EAS1599_1:2:1:1:2025 length=35
 CNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
 +SRR098026.177 HWUSI-EAS1599_1:2:1:1:2025 length=35
@@ -581,6 +580,12 @@ because they fit the pattern of ending with .fastq in the directory we've specif
 the code that we want to execute. We are telling the loop to print the first two lines of each variable we iterate over. Finally, the
 word `done` ends the loop.
 
+You can also write your for loop all on one line, like so:
+
+```bash
+$ for filename in *.fastq; do head -n 2 ${filename}; done
+```
+
 After executing the loop, you should see the first two lines of both fastq files printed to the terminal. Let's create a loop that
 will save this information to a file.
 
@@ -589,6 +594,11 @@ $ for filename in *.fastq
 > do
 > head -n 2 ${filename} >> seq_info.txt
 > done
+```
+
+alternate one-liner:
+```bash
+$ for filename in *.txt; do name=$(basename ${filename}.txt); mv ${filename}  ${name}_2019.txt; done
 ```
 
 When writing a loop, you will not be able to return to previous lines once you have pressed Enter. Remember that we can cancel the current command using
@@ -634,6 +644,11 @@ $ for filename in *.fastq
 > name=$(basename ${filename} .fastq)
 > echo ${name}
 > done
+```
+
+alternate one-liner:
+```bash
+$ for filename in *_2019.txt; do name=$(basename ${filename}_2019.txt); mv ${filename} ${name}.txt; done
 ```
 
 :::::::::::::::::::::::::::::::::::::::  challenge
