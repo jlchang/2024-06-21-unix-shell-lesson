@@ -22,6 +22,19 @@ exercises: 10
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
+:::::::::::::::::::::::::::::::::::::::::: spoiler
+
+## Before we begin
+
+Open the collaborative doc for our workshop https://broad.io/cb-unix-20240509  
+
+![](fig/broad_io-cb-unix-20240509.png){alt='Workshop collaborative doc'}
+
+If you haven't already, please complete your workshop setup https://broad.io/cb-unix-setup
+
+Feel free to browse today's lesson content
+::::::::::::::::::::::::::::::::::::::::::
+
 ## What is a shell and why should I care?
 
 A *shell* is a computer program that presents a command line interface
@@ -232,11 +245,17 @@ $ ls
 alphabetical order,
 arranged neatly into columns. Your output may look different if you already have files in your home directory. Let's get some example directories and files so we can practice navigating in a Unix environment.
 
-On most Unix systems, you can grab a file over the internet using a tool called `wget`.
+On most Unix systems, you can grab a file over the internet using a tool called `wget`. We'll talk about `wget` in more detail later. For now, run this command:
 
 ```bash
 $ wget https://github.com/jlchang/2024-05-09-Unix_Shell_pilot/raw/main/learners/files/cb_unix_shell.tgz
 ```
+:::::::::::::::::::::::::::::::::::::::::: spoiler
+## Pasting text into PowerShell (Windows)
+
+To paste text in Windows PowerShell, right click where you want to insert (note: left click will discard what is in your clipboard). For some Windows systems you may need to use `ctrl` + `insert` instead.
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ```output
 --2024-04-26 08:57:28--  https://github.com/jlchang/2024-05-09-Unix_Shell_pilot/raw/jlc_episode1_edits/learners/files/cb_unix_shell.tgz

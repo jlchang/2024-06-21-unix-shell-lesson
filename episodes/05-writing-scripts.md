@@ -394,8 +394,8 @@ to upload data to your virtual machine.
 
 ### PCSP
 
-If you're using a Windows PC without Git Bash, we recommend you use the *PSCP* program.
-This program is from the same suite of tools as the PuTTY program we have been using to connect.
+If you're using a Windows PC without Git Bash, one option is the *PSCP* program.
+This program is from a suite of tools that offers PuTTY, a freeware terminal program.
 
 1. If you haven't done so, download *PSCP* from [http://the.earth.li/~sgtatham/putty/latest/x86/pscp.exe](https://the.earth.li/~sgtatham/putty/latest/x86/pscp.exe)
 2. Make sure the *PSCP* program is somewhere you know on your computer. In this case,
