@@ -14,7 +14,7 @@ For the workshop, we will use the Broad's [login servers](https://intranet.broad
 :::::::::::::::::::::::::::::::::::::::::: spoiler
 ## Virtual Private Network (VPN) Access
 
-To reach to the Broad login servers when you are off-site, you will connect to the Broad VPN to access internal Broad resources.
+To reach to the Broad login servers when you are off-site or using a non-Broad computer, you will connect to the Broad VPN to access internal Broad resources.
 
 #### [VPN Installation](https://intranet.broadinstitute.org/bits/service-catalog/networking/vpn)
 - Use Broad Self Service ([Mac](https://intranet.broadinstitute.org/bits/service-catalog/applications/self-service-software-mac) or [Windows](https://intranet.broadinstitute.org/bits/service-catalog/applications/software-center-windows-self-service)) to install the **Cisco AnyConnect Secure Mobility Client** software <p><p>
