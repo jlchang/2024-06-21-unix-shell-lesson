@@ -623,6 +623,16 @@ indicates that you have permission to write to (i.e. make changes to) the file, 
 don't have permission to carry out the ability encoded by that space (this is the space where `x` or executable ability is stored, we'll
 talk more about this in [a later lesson](05-writing-scripts.md)).
 
+:::::::::::::::::::::::::::::::::::::::::: spoiler
+## File permissions resources 
+
+For more information on Unix file permissions:
+https://help.rc.unc.edu/how-to-use-unix-and-linux-file-permissions/
+To convert between numeric (eg. 777) and symbolic (eg. rwxrwxrwx) Unix permissions notation:
+https://chmod-calculator.com/
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
 Our goal for now is to change permissions on this file so that you no longer have `w` or write permissions. We can do this using the `chmod` (change mode) command and subtracting (`-`) the write permission `-w`.
 
 ```bash
