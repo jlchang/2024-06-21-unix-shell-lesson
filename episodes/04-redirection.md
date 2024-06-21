@@ -579,11 +579,14 @@ $ for filename in *.fastq
 
 The for loop begins with the formula `for <variable> in <group to iterate over>`. In this case, the word `filename` is designated
 as the variable to be used over each iteration. In our case `SRR097977.fastq` and `SRR098026.fastq` will be substituted for `filename`
-because they fit the pattern of ending with .fastq in the directory we've specified. The next line of the for loop is `do`. The next line is
-the code that we want to execute. We are telling the loop to print the first two lines of each variable we iterate over. Finally, the
-word `done` ends the loop.
+because they fit the pattern of ending with .fastq in the directory we've specified.  
 
-You can also write your for loop all on one line, like so:
+The next line of the for loop is `do`. Followed by a line with the
+the code that we want to execute. We are telling the loop to print the first two lines of each variable we iterate over.  
+
+Finally, the word `done` ends the loop.
+
+You can also write your for loop all on one line, adding a semicolon before the key words `do` and `done`, like so:
 
 ```bash
 $ for filename in *.fastq; do head -n 2 ${filename}; done
