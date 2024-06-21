@@ -4,15 +4,16 @@ title: File manipulation
 
 ## File manipulation and more practice with pipes
 
-Let's use the tools we've added to our tool kit so far, along with a few new ones, to example our SRA metadata file. First, let's navigate to the correct directory.
+Let's use the tools we've added to our tool kit so far, along with a few new ones, to example our SRA metadata file. First, let's download the data.
 
 ```bash
 $ cd
-$ cd shell_data/sra_metadata
+$ wget https://github.com/jlchang/2024-05-09-Unix_Shell_pilot/raw/main/learners/files/sra_metadata.zip
+$ unzip sra_metadata.zip
+$ cd sra_metadata
 ```
 
-This file contains a lot of information about the samples that we submitted for sequencing. We
-took a look at this file in an earlier lesson. Here we're going to use the information in this
+This file contains a lot of information about the samples that we submitted for sequencing. Here we're going to use the information in this
 file to answer some questions about our samples.
 
 #### How many of the read libraries are paired end?

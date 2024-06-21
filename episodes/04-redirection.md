@@ -43,12 +43,14 @@ nucleotide at that position in the DNA sequence.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-We'll search for strings inside of our fastq files. Usually, it's best to minimize the number of copies of data so there's a single "source of truth" to reference. For this workshop, we're going to have you copy the files to your home directory.
+We'll search for strings inside of our fastq files. Usually, it's best to minimize the number of copies of data so there's a single "source of truth" to reference. For this workshop, we're going to have you make a link to the files in your home directory. Soft links (using `ln -s`) can be thought of as an alias or shortcut to data at a different physical location. 
 
 ```bash
 $ cd 
-$ cp -r /broad/hptmp/computing_basics/untrimmed_fastq/ .
+$ mkdir untrimmed_fastq
 $ cd untrimmed_fastq
+$ ln -s /broad/hptmp/computing_basics/untrimmed_fastq/SRR098026.fastq SRR098026.fastq
+$ ln -s /broad/hptmp/computing_basics/untrimmed_fastq/SRR097977.fastq SRR097977.fastq
 ```
 
 :::::::::::::::::::::::::::::::::::::::::: spoiler
@@ -217,7 +219,7 @@ If you're seeing
 
 your current working directory is probably `/broad/hptmp/computing_basics/untrimmed_fastq` and not `~/untrimmed_fastq`
 
-you can use this command to _p_rint your _w_orking _d_irectory
+you can use the following command to _p_rint your _w_orking _d_irectory
 
 ```bash
 pwd
@@ -297,11 +299,11 @@ Note, this will do integer division - if you need floating point arithmetic you 
 
 
 ```bash
-$ echo "996/4" | bc
+$ echo "996/7" | bc -l
 ```
 
 ```output
-249
+142.28571428571428571428
 ```
 
 :::::::::::::::::::::::::
@@ -403,7 +405,8 @@ and then ran the command above using a `.fastq` extension instead of a `.txt` ex
 would give us a warning.
 
 ```bash
-grep -B1 -A2 NNNNNNNNNN *.fastq > bad_reads.fastq
+$ touch bad_reads.fastq # to simulate having an existing bad_reads.fastq file
+$ grep -B1 -A2 NNNNNNNNNN *.fastq > bad_reads.fastq
 ```
 
 ```output
@@ -411,7 +414,7 @@ grep: input file ‘bad_reads.fastq' is also the output
 ```
 
 `grep` is letting you know that the output file `bad_reads.fastq` is also included in your
-`grep` call because it matches the `*.fastq` pattern. Be careful with this as it can lead to
+`grep` call because it matches the `*.fastq` pattern. Be careful with this file extension gotcha as it can lead to
 some unintended results.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -564,10 +567,11 @@ $ echo foo is ${foo}EFG      # now it works!
 foo is abcEFG
 ```
 
-Let's write a for loop to show us the first two lines of the fastq files we downloaded earlier. You will notice the shell prompt changes from `$` to `>` and back again as we were typing in our loop. The second prompt, `>`, is different to remind us that we haven't finished typing a complete command yet. A semicolon, `;`, can be used to separate two commands written on a single line.
+Let's write a for loop to show us the first two lines of the fastq files we linked to earlier. You will notice the shell prompt changes from `$` to `>` and back again as we were typing in our loop. The second prompt, `>`, is different to remind us that we haven't finished typing a complete command yet. A semicolon, `;`, can be used to separate two commands written on a single line.
 
 
 ```bash
+$ rm bad_reads.fastq         # lets get rid of this file extension "gotcha" file
 $ for filename in *.fastq
 > do
 > head -n 2 ${filename}
@@ -576,11 +580,14 @@ $ for filename in *.fastq
 
 The for loop begins with the formula `for <variable> in <group to iterate over>`. In this case, the word `filename` is designated
 as the variable to be used over each iteration. In our case `SRR097977.fastq` and `SRR098026.fastq` will be substituted for `filename`
-because they fit the pattern of ending with .fastq in the directory we've specified. The next line of the for loop is `do`. The next line is
-the code that we want to execute. We are telling the loop to print the first two lines of each variable we iterate over. Finally, the
-word `done` ends the loop.
+because they fit the pattern of ending with .fastq in the directory we've specified.  
 
-You can also write your for loop all on one line, like so:
+The next line of the for loop is `do`. Followed by a line with the
+the code that we want to execute. We are telling the loop to print the first two lines of each variable we iterate over.  
+
+Finally, the word `done` ends the loop.
+
+You can also write your for loop all on one line, adding a semicolon before the key words `do` and `done`, like so:
 
 ```bash
 $ for filename in *.fastq; do head -n 2 ${filename}; done
@@ -598,7 +605,7 @@ $ for filename in *.fastq
 
 alternate one-liner:
 ```bash
-$ for filename in *.txt; do name=$(basename ${filename}.txt); mv ${filename}  ${name}_2019.txt; done
+$ for filename in *.fastq; do head -n 2 ${filename} >> seq_info.txt; done
 ```
 
 When writing a loop, you will not be able to return to previous lines once you have pressed Enter. Remember that we can cancel the current command using
@@ -641,14 +648,14 @@ Inside our for loop, we create a new name variable. We call the basename functio
 ```bash
 $ for filename in *.fastq
 > do
-> name=$(basename ${filename} .fastq)
+> name=$(basename ${filename}.fastq)
 > echo ${name}
 > done
 ```
 
-alternate one-liner:
+For this alternate one-liner, notice we also separate commands in the `do` clause with semicolons:
 ```bash
-$ for filename in *_2019.txt; do name=$(basename ${filename}_2019.txt); mv ${filename} ${name}.txt; done
+$ for filename in *.fastq; do name=$(basename ${filename}.fastq); echo ${name}; done
 ```
 
 :::::::::::::::::::::::::::::::::::::::  challenge
@@ -669,6 +676,10 @@ $ for filename in *.txt
 > done
 ```
 
+alternate one-liner:
+```bash
+$ for filename in *.txt; do name=$(basename ${filename} .txt); echo ${name}; done
+```
 :::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -679,28 +690,35 @@ One way this is really useful is to move files. Let's rename all of our .txt fil
 $ for filename in *.txt
 > do
 > name=$(basename ${filename} .txt)
-> mv ${filename}  ${name}_2019.txt
+> mv ${filename} ${name}_2024.txt
 > done
 ```
 
+alternate one-liner:
+```bash
+$ for filename in *.txt; do name=$(basename ${filename} .txt); mv ${filename} ${name}_2024.txt; done
+```
 :::::::::::::::::::::::::::::::::::::::  challenge
 
 ## Exercise
 
-Remove `_2019` from all of the `.txt` files.
+Remove `_2024` from all of the `.txt` files.
 
 :::::::::::::::  solution
 
 ## Solution
 
 ```bash
-$ for filename in *_2019.txt
+$ for filename in *_2024.txt
 > do
-> name=$(basename ${filename} _2019.txt)
+> name=$(basename ${filename} _2024.txt)
 > mv ${filename} ${name}.txt
 > done
 ```
-
+alternate one-liner:
+```bash
+$ for filename in *_2024.txt; do name=$(basename ${filename} _2024.txt); mv ${filename} ${name}.txt; done
+```
 :::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
