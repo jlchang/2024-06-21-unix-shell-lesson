@@ -330,7 +330,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Writing Scripts and Working with Data</h1>
-        <p>Last updated on 2024-06-20 |
+        <p>Last updated on 2024-06-21 |
         
         <a href="https://github.com/jlchang/2024-06-21-unix-shell-lesson/edit/main/episodes/05-writing-scripts.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
@@ -411,14 +411,13 @@ called <code>README.txt</code>:</p>
 <figure><img src="fig/nano201711.png" alt="nano201711.png" class="figure mx-auto d-block"></figure><p>The text at the bottom of the screen shows the keyboard shortcuts for
 performing various tasks in <code>nano</code>. We will talk more about
 how to interpret this information soon.</p>
-<div id="which-editor" class="callout">
-<div class="callout-square">
-<i class="callout-icon" data-feather="bell"></i>
-</div>
-<div id="which-editor" class="callout-inner">
-<h3 class="callout-title">Which Editor?<a class="anchor" aria-label="anchor" href="#which-editor"></a>
-</h3>
-<div class="callout-content">
+<div id="accordionSpoiler1" class="accordion spoiler-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
+  <h3 class="accordion-header" id="headingSpoiler1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> Which Editor? </h3>
+</button>
+<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
+<div class="accordion-body">
 <p>When we say, “<code>nano</code> is a text editor,” we really do mean
 “text”: <code>nano</code> can only work with plain character data, not
 tables, images, or any other human-friendly media. We use
@@ -440,6 +439,7 @@ working directory as its default location. If you use your computer’s
 start menu, the editor may want to save files in your desktop or
 documents directory instead. You can change this by navigating to
 another directory the first time you “Save As…”</p>
+</div>
 </div>
 </div>
 </div>
@@ -648,18 +648,18 @@ to look here in this directory for the program.</p>
 </div>
 <p>The script should run the same way as before, but now we’ve created
 our very own computer program!</p>
-<p>You will learn more about writing scripts in <a href="https://datacarpentry.org/wrangling-genomics/05-automation" class="external-link">a
-later lesson</a>.</p>
+<p>You can learn more about writing scripts in <a href="https://datacarpentry.org/wrangling-genomics/05-automation" class="external-link">this
+Data Carpentries lesson</a>.</p>
 </section><section id="moving-and-downloading-data"><h2 class="section-heading">Moving and Downloading Data<a class="anchor" aria-label="anchor" href="#moving-and-downloading-data"></a>
 </h2>
-<hr class="half-width"><p>So far, we’ve worked with data that is pre-loaded on the instance in
-the cloud. Usually, however, most analyses begin with moving data onto
-the instance. Below we’ll show you some commands to download data onto
-your instance, or to move data between your computer and the cloud.</p>
+<hr class="half-width"><p>Often, analyses begin with moving data onto the machine where you’ll
+be running the analysis. Below we’ll show you some options for
+downloading data onto a remote server, or to move data between your
+computer and the cloud.</p>
 <div class="section level3">
 <h3 id="getting-data-from-the-cloud">Getting data from the cloud<a class="anchor" aria-label="anchor" href="#getting-data-from-the-cloud"></a></h3>
-<p>There are two programs that will download data from a remote server
-to your local (or remote) machine: <code>wget</code> and
+<p>There are two programs that will download data from the internet to
+your local machine (or a remote server): <code>wget</code> and
 <code>curl</code>. They were designed to do slightly different tasks by
 default, so you’ll need to give the programs somewhat different options
 to get the same behaviour, but they are mostly interchangeable.</p>
@@ -687,7 +687,7 @@ download, we need to know whether we’re using <code>curl</code> or
 you have installed, and tells you what folder it is installed to. If it
 can’t find the program you asked for, it returns nothing, i.e. gives you
 no results.</p>
-<p>On Mac OSX, you’ll likely get the following output:</p>
+<p>On Mac OSX, you might see the following output:</p>
 <div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -756,12 +756,12 @@ instance.</strong></p>
 <hr class="half-width"><p>If you’re using Linux, Mac OS, or Windows with Git Bash on your local
 machine, you can use <code>scp</code> to upload data to your virtual
 machine.</p>
-<div id="accordionSpoiler1" class="accordion spoiler-accordion accordion-flush">
+<div id="accordionSpoiler2" class="accordion spoiler-accordion accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
-  <h3 class="accordion-header" id="headingSpoiler1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> SCP </h3>
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler2" aria-expanded="false" aria-controls="collapseSpoiler2">
+  <h3 class="accordion-header" id="headingSpoiler2">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> SCP </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
+<div id="collapseSpoiler2" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler2" aria-labelledby="headingSpoiler2">
 <div class="accordion-body">
 <p><code>scp</code> stands for ‘secure copy protocol’, and is a widely
 used UNIX tool for moving files between computers. The simplest way to
@@ -774,8 +774,8 @@ copy a single file:</p>
 </div>
 <p>Note that you are always running <code>scp</code> locally, but that
 <em>doesn’t</em> mean that you can only move files from your local
-computer. In order to move a file from your local computer to an AWS
-instance, the command would look like this:</p>
+computer. In order to move a file from your local computer to an remote
+server, the command would look like this:</p>
 <div class="codewrapper sourceCode" id="cb20">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -805,7 +805,7 @@ xfer3.broadinstitute.org</p>
 <h4 id="downloading-data-from-your-virtual-machine-with-scp">Downloading Data from your Virtual Machine with scp<a class="anchor" aria-label="anchor" href="#downloading-data-from-your-virtual-machine-with-scp"></a></h4>
 <p>Let’s download a text file from our remote machine. You should have a
 file that contains bad reads called
-~/shell_data/scripted_bad_reads.txt.</p>
+~/untrimmed_fastq/scripted_bad_reads.txt.</p>
 <p><strong>Tip:</strong> If you are looking for another (or any really)
 text file in your home directory to use instead, try:</p>
 <div class="codewrapper sourceCode" id="cb23">
@@ -834,12 +834,12 @@ command.</p>
 <p>If you are using Windows without Git Bash on your local machine, you
 can use <code>pscp.exe</code> to upload data to your virtual
 machine.</p>
-<div id="accordionSpoiler2" class="accordion spoiler-accordion accordion-flush">
+<div id="accordionSpoiler3" class="accordion spoiler-accordion accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler2" aria-expanded="false" aria-controls="collapseSpoiler2">
-  <h3 class="accordion-header" id="headingSpoiler2">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> PCSP </h3>
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler3" aria-expanded="false" aria-controls="collapseSpoiler3">
+  <h3 class="accordion-header" id="headingSpoiler3">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> PCSP </h3>
 </button>
-<div id="collapseSpoiler2" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler2" aria-labelledby="headingSpoiler2">
+<div id="collapseSpoiler3" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler3" aria-labelledby="headingSpoiler3">
 <div class="accordion-body">
 <p>If you’re using a Windows PC without Git Bash, one option is the
 <em>PSCP</em> program. This program is from a suite of tools that offers
@@ -860,9 +860,11 @@ C:\Users\your-pc-username&gt;).</li>
 </div>
 <ol start="5" style="list-style-type: decimal"><li>Locate a file on your computer that you wish to upload (be sure you
 know the path). Then upload it to your remote machine <strong>(you will
-need to know your AMI instance address (which starts with ec2), and
-login credentials)</strong>. You will be prompted to enter a password,
-and then your upload will begin. <strong>(make sure you substitute
+need to know the name of the remote machine. At Broad, remote servers
+used for data transfer are xfer1.broadinstitute.org,
+xfer2.broadinstitute.org and xfer3.broadinstitute.org, and your login
+credentials)</strong>. You will be prompted to enter a password, and
+then your upload will begin. <strong>(make sure you substitute
 ‘your-pc-username’ for your actual pc username and ‘<username><span class="citation">@remote.server.address</span>’ with your username and a
 Broad data transfer server address)</username></strong>
 </li>
@@ -969,8 +971,8 @@ any links that you are not going to use.
   "url": "https://jlchang.github.io/2024-06-21-unix-shell-lesson/05-writing-scripts.html",
   "identifier": "https://jlchang.github.io/2024-06-21-unix-shell-lesson/05-writing-scripts.html",
   "dateCreated": "2024-04-24",
-  "dateModified": "2024-06-20",
-  "datePublished": "2024-06-20"
+  "dateModified": "2024-06-21",
+  "datePublished": "2024-06-21"
 }
 
   </script><script>

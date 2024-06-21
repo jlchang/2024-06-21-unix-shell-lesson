@@ -315,7 +315,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>File manipulation</h1>
-        <p>Last updated on 2024-04-21 |
+        <p>Last updated on 2024-06-21 |
         
         <a href="https://github.com/jlchang/2024-06-21-unix-shell-lesson/edit/main/instructors/Extra_lesson.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
@@ -332,18 +332,19 @@
 <section id="file-manipulation-and-more-practice-with-pipes"><h2 class="section-heading">File manipulation and more practice with pipes<a class="anchor" aria-label="anchor" href="#file-manipulation-and-more-practice-with-pipes"></a>
 </h2>
 <hr class="half-width"><p>Let’s use the tools we’ve added to our tool kit so far, along with a
-few new ones, to example our SRA metadata file. First, let’s navigate to
-the correct directory.</p>
+few new ones, to example our SRA metadata file. First, let’s download
+the data.</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="ex">$</span> cd</span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="ex">$</span> cd shell_data/sra_metadata</span></code></pre>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="ex">$</span> wget https://github.com/jlchang/2024-05-09-Unix_Shell_pilot/raw/main/learners/files/sra_metadata.zip</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="ex">$</span> unzip sra_metadata.zip</span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="ex">$</span> cd sra_metadata</span></code></pre>
 </div>
 <p>This file contains a lot of information about the samples that we
-submitted for sequencing. We took a look at this file in an earlier
-lesson. Here we’re going to use the information in this file to answer
-some questions about our samples.</p>
+submitted for sequencing. Here we’re going to use the information in
+this file to answer some questions about our samples.</p>
 <div class="section level4">
 <h4 id="how-many-of-the-read-libraries-are-paired-end">How many of the read libraries are paired end?<a class="anchor" aria-label="anchor" href="#how-many-of-the-read-libraries-are-paired-end"></a></h4>
 <p>The samples that we submitted to the sequencing facility were a mix
@@ -781,8 +782,8 @@ any links that you are not going to use.
   "url": "https://jlchang.github.io/2024-06-21-unix-shell-lesson/instructor/Extra_lesson.html",
   "identifier": "https://jlchang.github.io/2024-06-21-unix-shell-lesson/instructor/Extra_lesson.html",
   "dateCreated": "2024-04-24",
-  "dateModified": "2024-04-21",
-  "datePublished": "2024-06-20"
+  "dateModified": "2024-06-21",
+  "datePublished": "2024-06-21"
 }
 
   </script><script>
