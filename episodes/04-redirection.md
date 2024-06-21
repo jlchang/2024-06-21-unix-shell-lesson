@@ -43,12 +43,14 @@ nucleotide at that position in the DNA sequence.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-We'll search for strings inside of our fastq files. Usually, it's best to minimize the number of copies of data so there's a single "source of truth" to reference. For this workshop, we're going to have you copy the files to your home directory.
+We'll search for strings inside of our fastq files. Usually, it's best to minimize the number of copies of data so there's a single "source of truth" to reference. For this workshop, we're going to have you make a link to the files in your home directory. Soft links (using `ln -s`) can be thought of as an alias or shortcut to data at a different physical location. 
 
 ```bash
 $ cd 
-$ cp -r /broad/hptmp/computing_basics/untrimmed_fastq/ .
+$ mkdir untrimmed_fastq
 $ cd untrimmed_fastq
+$ ln -s /broad/hptmp/computing_basics/untrimmed_fastq/SRR098026.fastq SRR098026.fastq
+$ ln -s /broad/hptmp/computing_basics/untrimmed_fastq/SRR097977.fastq SRR097977.fastq
 ```
 
 :::::::::::::::::::::::::::::::::::::::::: spoiler
@@ -217,7 +219,7 @@ If you're seeing
 
 your current working directory is probably `/broad/hptmp/computing_basics/untrimmed_fastq` and not `~/untrimmed_fastq`
 
-you can use this command to _p_rint your _w_orking _d_irectory
+you can use the following command to _p_rint your _w_orking _d_irectory
 
 ```bash
 pwd
