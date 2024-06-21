@@ -405,7 +405,8 @@ and then ran the command above using a `.fastq` extension instead of a `.txt` ex
 would give us a warning.
 
 ```bash
-grep -B1 -A2 NNNNNNNNNN *.fastq > bad_reads.fastq
+$ touch bad_reads.fastq # to simulate having an existing bad_reads.fastq file
+$ grep -B1 -A2 NNNNNNNNNN *.fastq > bad_reads.fastq
 ```
 
 ```output
@@ -413,7 +414,7 @@ grep: input file ‘bad_reads.fastq' is also the output
 ```
 
 `grep` is letting you know that the output file `bad_reads.fastq` is also included in your
-`grep` call because it matches the `*.fastq` pattern. Be careful with this as it can lead to
+`grep` call because it matches the `*.fastq` pattern. Be careful with this file extension gotcha as it can lead to
 some unintended results.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
