@@ -567,10 +567,11 @@ $ echo foo is ${foo}EFG      # now it works!
 foo is abcEFG
 ```
 
-Let's write a for loop to show us the first two lines of the fastq files we downloaded earlier. You will notice the shell prompt changes from `$` to `>` and back again as we were typing in our loop. The second prompt, `>`, is different to remind us that we haven't finished typing a complete command yet. A semicolon, `;`, can be used to separate two commands written on a single line.
+Let's write a for loop to show us the first two lines of the fastq files we linked to earlier. You will notice the shell prompt changes from `$` to `>` and back again as we were typing in our loop. The second prompt, `>`, is different to remind us that we haven't finished typing a complete command yet. A semicolon, `;`, can be used to separate two commands written on a single line.
 
 
 ```bash
+$ rm bad_reads.fastq         # lets get rid of this file extension "gotcha" file
 $ for filename in *.fastq
 > do
 > head -n 2 ${filename}
@@ -604,7 +605,7 @@ $ for filename in *.fastq
 
 alternate one-liner:
 ```bash
-$ for filename in *.txt; do name=$(basename ${filename}.txt); mv ${filename}  ${name}_2019.txt; done
+$ for filename in *.fastq; do head -n 2 ${filename} >> seq_info.txt; done
 ```
 
 When writing a loop, you will not be able to return to previous lines once you have pressed Enter. Remember that we can cancel the current command using
@@ -647,14 +648,14 @@ Inside our for loop, we create a new name variable. We call the basename functio
 ```bash
 $ for filename in *.fastq
 > do
-> name=$(basename ${filename} .fastq)
+> name=$(basename ${filename}.fastq)
 > echo ${name}
 > done
 ```
 
-alternate one-liner:
+For this alternate one-liner, notice we also separate commands in the `do` clause with semicolons:
 ```bash
-$ for filename in *_2019.txt; do name=$(basename ${filename}_2019.txt); mv ${filename} ${name}.txt; done
+$ for filename in *.fastq; do name=$(basename ${filename}.fastq); echo ${name}; done
 ```
 
 :::::::::::::::::::::::::::::::::::::::  challenge
@@ -675,6 +676,10 @@ $ for filename in *.txt
 > done
 ```
 
+alternate one-liner:
+```bash
+$ for filename in *.txt; do name=$(basename ${filename} .txt); echo ${name}; done
+```
 :::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -685,28 +690,35 @@ One way this is really useful is to move files. Let's rename all of our .txt fil
 $ for filename in *.txt
 > do
 > name=$(basename ${filename} .txt)
-> mv ${filename}  ${name}_2019.txt
+> mv ${filename} ${name}_2024.txt
 > done
 ```
 
+alternate one-liner:
+```bash
+$ for filename in *.txt; do name=$(basename ${filename} .txt); mv ${filename} ${name}_2024.txt; done
+```
 :::::::::::::::::::::::::::::::::::::::  challenge
 
 ## Exercise
 
-Remove `_2019` from all of the `.txt` files.
+Remove `_2024` from all of the `.txt` files.
 
 :::::::::::::::  solution
 
 ## Solution
 
 ```bash
-$ for filename in *_2019.txt
+$ for filename in *_2024.txt
 > do
-> name=$(basename ${filename} _2019.txt)
+> name=$(basename ${filename} _2024.txt)
 > mv ${filename} ${name}.txt
 > done
 ```
-
+alternate one-liner:
+```bash
+$ for filename in *_2024.txt; do name=$(basename ${filename} _2024.txt); mv ${filename} ${name}.txt; done
+```
 :::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
