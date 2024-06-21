@@ -299,11 +299,11 @@ Note, this will do integer division - if you need floating point arithmetic you 
 
 
 ```bash
-$ echo "996/4" | bc
+$ echo "996/7" | bc -l
 ```
 
 ```output
-249
+142.28571428571428571428
 ```
 
 :::::::::::::::::::::::::
