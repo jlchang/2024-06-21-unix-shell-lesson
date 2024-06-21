@@ -53,7 +53,8 @@ We are interested in looking at the sequencing runfolders in this directory.
 $ ls
 ```
 
-There are a lot of directories! The directories were created to be programmatically searchable so they follow a specific format:  R_<year>_<month>_<date>_<hour>_<min>_<sec>_<machine_name>_<machine_operator>_<run_name>.
+There are a lot of directories! The directories were created to be programmatically searchable so they follow a specific format:   R_\<year\>\_\<month\>\_\<date\>\_\<hour\>\_\<min\>\_\<sec\>\_\<machine_name\>\_\<machine_operator\>\_\<run_name\>  
+
 We can list all runs from 2012 using the command:
 
 ```bash
@@ -78,7 +79,7 @@ $ ls -d R_2012_*
 ```
 
 ```output
-R_2012_03_13_15_18_05_crinkle_DRobbins_DR031312lastRun646704  R_2012_03_15_14_41_54_crinkle_DRobbins_DR031512Run760581
+R_2012_03_13_15_18_05_crinkle_DRobbins_DR031312lastRun646704   R_2012_03_15_14_41_54_crinkle_DRobbins_DR031512Run760581
 ```
 
 You can also use wildcards on either end of your search (or both). Here we search for all runs on the machine "seabiscuit":
@@ -98,7 +99,7 @@ R_2009_05_15_13_55_34_seabiscuit_AHolling_BacEscEscEscRun646819
 
 lists only the directories with `seabiscuit` in the directory name.
 
-This command:
+What do you think this command will do?
 
 ```bash
 $ ls /usr/bin/*.sh
@@ -364,7 +365,7 @@ return, you will search backwards and move up the file to previous examples of t
 
 ## Exercise
 
-What are the next three nucleotides (characters) after the first instance of the sequence quoted above?
+What are the next three nucleotides (characters) after the first instance of the sequence `TTTTT` quoted above?
 
 :::::::::::::::  solution
 
@@ -626,9 +627,9 @@ talk more about this in [a later lesson](05-writing-scripts.md)).
 :::::::::::::::::::::::::::::::::::::::::: spoiler
 ## File permissions resources 
 
-For more information on Unix file permissions:
-https://help.rc.unc.edu/how-to-use-unix-and-linux-file-permissions/
-To convert between numeric (eg. 777) and symbolic (eg. rwxrwxrwx) Unix permissions notation:
+For more information on Unix file permissions:  
+https://help.rc.unc.edu/how-to-use-unix-and-linux-file-permissions/  
+To convert between numeric (eg. 777) and symbolic (eg. rwxrwxrwx) Unix permissions notation:  
 https://chmod-calculator.com/
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -663,7 +664,7 @@ rm: remove write-protected regular file ‘SRR098026-backup.fastq'?
 You should enter `n` for no. If you enter `n` (for no), the file will not be deleted. If you enter `y`, you will delete the file. This gives us an extra
 measure of security, as there is one more step between us and deleting our data files.
 
-**Important**: The `rm` command permanently removes the file. Be careful with this command. It doesn't
+**Important**: The `rm` command permanently removes the file. Be careful with this command (especially if you're also using wildcards). It doesn't
 just nicely put the files in the Trash. They're really gone.
 
 By default, `rm` will not delete directories. You can tell `rm` to

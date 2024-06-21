@@ -61,7 +61,7 @@ You should see something like this:
 
 The text at the bottom of the screen shows the keyboard shortcuts for performing various tasks in `nano`. We will talk more about how to interpret this information soon.
 
-:::::::::::::::::::::::::::::::::::::::::  callout
+::::::::::::::::::::::::::::::::::::  spoiler
 
 ## Which Editor?
 
@@ -86,7 +86,7 @@ your computer's start menu, the editor may want to save files in your desktop or
 documents directory instead. You can change this by navigating to
 another directory the first time you "Save As..."
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::::::::::::::::::::::::::::::::::::::::::::
 
 Let's type in a few lines of text. Describe what the files in this
 directory are or what you've been doing with them.
@@ -235,18 +235,17 @@ $ ./bad-reads-script.sh
 
 The script should run the same way as before, but now we've created our very own computer program!
 
-You will learn more about writing scripts in [a later lesson](https://datacarpentry.org/wrangling-genomics/05-automation).
+You can learn more about writing scripts in [this Data Carpentries lesson](https://datacarpentry.org/wrangling-genomics/05-automation).
 
 ## Moving and Downloading Data
 
-So far, we've worked with data that is pre-loaded on the instance in the cloud. Usually, however,
-most analyses begin with moving data onto the instance. Below we'll show you some commands to
-download data onto your instance, or to move data between your computer and the cloud.
+Often, analyses begin with moving data onto the machine where you'll be running the analysis. Below we'll show you some options for
+downloading data onto a remote server, or to move data between your computer and the cloud.
 
 ### Getting data from the cloud
 
-There are two programs that will download data from a remote server to your local
-(or remote) machine: `wget` and `curl`. They were designed to do slightly different
+There are two programs that will download data from the internet to your local machine
+(or a remote server): `wget` and `curl`. They were designed to do slightly different
 tasks by default, so you'll need to give the programs somewhat different options to get
 the same behaviour, but they are mostly interchangeable.
 
@@ -275,7 +274,7 @@ installed, and tells you what folder it is installed to. If it can't
 find the program you asked for, it returns nothing, i.e. gives you no
 results.
 
-On Mac OSX, you'll likely get the following output:
+On Mac OSX, you might see the following output:
 
 ```bash
 $ which curl
@@ -346,7 +345,7 @@ scp <file I want to move> <where I want to move it>
 ```
 
 Note that you are always running `scp` locally, but that *doesn't* mean that
-you can only move files from your local computer. In order to move a file from your local computer to an AWS instance, the command would look like this:
+you can only move files from your local computer. In order to move a file from your local computer to an remote server, the command would look like this:
 
 ```bash
 $ scp <local file> <remote instance>
@@ -369,7 +368,7 @@ At Broad, remote servers used for data transfer are xfer1.broadinstitute.org, xf
 
 #### Downloading Data from your Virtual Machine with scp
 
-Let's download a text file from our remote machine. You should have a file that contains bad reads called ~/shell\_data/scripted\_bad\_reads.txt.
+Let's download a text file from our remote machine. You should have a file that contains bad reads called ~/untrimmed\_fastq/scripted\_bad\_reads.txt.
 
 **Tip:** If you are looking for another (or any really) text file in your home directory to use instead, try:
 
@@ -409,7 +408,7 @@ This program is from a suite of tools that offers PuTTY, a freeware terminal pro
 > cd Downloads
 ```
 
-5. Locate a file on your computer that you wish to upload (be sure you know the path). Then upload it to your remote machine **(you will need to know your AMI instance address (which starts with ec2), and login credentials)**. You will be prompted to enter a password, and then your upload will begin. **(make sure you substitute 'your-pc-username' for your actual pc username and '<username>@remote.server.address' with your username and a Broad data transfer server address)**
+5. Locate a file on your computer that you wish to upload (be sure you know the path). Then upload it to your remote machine **(you will need to know the name of the remote machine. At Broad, remote servers used for data transfer are xfer1.broadinstitute.org, xfer2.broadinstitute.org and xfer3.broadinstitute.org, and your login credentials)**. You will be prompted to enter a password, and then your upload will begin. **(make sure you substitute 'your-pc-username' for your actual pc username and '<username>@remote.server.address' with your username and a Broad data transfer server address)**
 
 ```bash
 C:\User\your-pc-username\Downloads> pscp.exe local_file.txt <username>@remote.server.address:~/
