@@ -16,4 +16,4 @@
 "learners/shellCheatSheet.md" "be933bb0d1398b70cc7af933a478fa5d" "site/built/shellCheatSheet.md" "2024-04-22"
 "learners/reference.md" "743879519ba0c87b0765b171e70ceac8" "site/built/reference.md" "2024-04-22"
 "profiles/learner-profiles.md" "60b93493cf1da06dfd63255d73854461" "site/built/learner-profiles.md" "2024-04-21"
-"renv/profiles/lesson-requirements/renv.lock" "57c8b37338e385ce9ff480641364d062" "site/built/renv.lock" "2024-05-21"
+"renv/profiles/lesson-requirements/renv.lock" "ecbd0379744fb19cc961ddc220a83885" "site/built/renv.lock" "2024-07-02"
