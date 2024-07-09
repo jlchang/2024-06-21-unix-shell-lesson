@@ -27,7 +27,7 @@
             <span class="visually-hidden">This lesson is in the beta phase, which means that it is ready for teaching by instructors outside of the original author team.</span>
           </abbr>
         </span>
-        
+
       </div>
     </div>
     <div class="selector-container">
@@ -56,7 +56,7 @@
             </li>
           </ul></li>
       </div>
-      
+
       <div class="dropdown" id="instructor-dropdown">
         <button class="btn btn-secondary dropdown-toggle bordered-button" type="button" id="dropdownMenu1" data-bs-toggle="dropdown" aria-expanded="false">
           <i aria-hidden="true" class="icon" data-feather="eye"></i> Learner View <i data-feather="chevron-down"></i>
@@ -180,7 +180,7 @@
                 </div><!--/div.accordion-flush-->
               </div><!--div.sidenav-view-selector -->
             </div><!--/div.col -->
-      
+
             <hr></div><!--/div.mobile-row -->
 
           <div class="accordion accordion-flush" id="accordionFlush11">
@@ -199,7 +199,7 @@
     <div class="accordion-header" id="flush-heading1">
         <a href="index.html">Summary and Setup</a>
     </div><!--/div.accordion-header-->
-        
+
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
 
@@ -208,7 +208,7 @@
     <div class="accordion-header" id="flush-heading2">
         <a href="01-introduction.html">1. Introducing the Shell</a>
     </div><!--/div.accordion-header-->
-        
+
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
 
@@ -222,7 +222,7 @@
         </span>
       </button>
     </div><!--/div.accordion-header-->
-        
+
     <div id="flush-collapsecurrent" class="accordion-collapse collapse show" aria-labelledby="flush-headingcurrent" data-bs-parent="#accordionFlushcurrent">
       <div class="accordion-body">
         <ul><li><a href="#moving-around-the-file-system">Moving around the file system</a></li>
@@ -230,7 +230,7 @@
 <li><a href="#full-vs.-relative-paths">Full vs. Relative Paths</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
-        
+
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
 
@@ -239,7 +239,7 @@
     <div class="accordion-header" id="flush-heading4">
         <a href="03-working-with-files.html">3. Working with Files and Directories</a>
     </div><!--/div.accordion-header-->
-        
+
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
 
@@ -248,7 +248,7 @@
     <div class="accordion-header" id="flush-heading5">
         <a href="04-redirection.html">4. Redirection</a>
     </div><!--/div.accordion-header-->
-        
+
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
 
@@ -257,7 +257,7 @@
     <div class="accordion-header" id="flush-heading6">
         <a href="05-writing-scripts.html">5. Writing Scripts and Working with Data</a>
     </div><!--/div.accordion-header-->
-        
+
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
 
@@ -266,7 +266,7 @@
     <div class="accordion-header" id="flush-heading7">
         <a href="06-organization.html">6. Project Organization</a>
     </div><!--/div.accordion-header-->
-        
+
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
 
@@ -298,10 +298,10 @@
               </div>
             </div>
             <hr class="half-width resources"><a href="aio.html">See all in one page</a>
-            
+
 
             <hr class="d-none d-sm-block d-md-none"><div class="d-grid gap-1">
-            
+
             </div>
           </div><!-- /div.accordion -->
         </div><!-- /div.sidebar-inner -->
@@ -322,18 +322,18 @@
           Previous: Introducing the
         </a>
         <a class="chapter-link float-end" href="03-working-with-files.html" rel="next">
-          Next: Working with Files... 
+          Next: Working with Files...
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i>
         </a>
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Navigating Files and Directories</h1>
         <p>Last updated on 2024-06-17 |
-        
+
         <a href="https://github.com/jlchang/2024-06-21-unix-shell-lesson/edit/main/episodes/02-the-filesystem.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
-        
-        
-        
+
+
+
         <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
@@ -370,8 +370,8 @@ directory.</li>
 </div>
 </div>
 </div>
-<section id="moving-around-the-file-system"><h2 class="section-heading">Moving around the file system<a class="anchor" aria-label="anchor" href="#moving-around-the-file-system"></a>
-</h2>
+<section><h2 class="section-heading" id="moving-around-the-file-system">Moving around the file system<a class="anchor" aria-label="anchor" href="#moving-around-the-file-system"></a>
+<a class="anchor" aria-label="anchor" href="#moving-around-the-file-system"></a></h2>
 <hr class="half-width"><div id="accordionSpoiler1" class="accordion spoiler-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
@@ -538,8 +538,8 @@ navigate to that directory using <code>cd</code>.</p>
 order to obtain the desired results/output.</p>
 <pre><code><span><span class="va">ls</span> <span class="op">-</span><span class="va">Fa</span></span>
 <span><span class="va">ls</span> <span class="op">-</span><span class="va">laF</span></span></code></pre>
-</section><section id="examining-the-contents-of-other-directories"><h2 class="section-heading">Examining the contents of other directories<a class="anchor" aria-label="anchor" href="#examining-the-contents-of-other-directories"></a>
-</h2>
+</section><section><h2 class="section-heading" id="examining-the-contents-of-other-directories">Examining the contents of other directories<a class="anchor" aria-label="anchor" href="#examining-the-contents-of-other-directories"></a>
+<a class="anchor" aria-label="anchor" href="#examining-the-contents-of-other-directories"></a></h2>
 <hr class="half-width"><p>By default, the <code>ls</code> commands lists the contents of the
 working directory (i.e. the directory you are in). You can always find
 the directory you are in using the <code>pwd</code> command. However,
@@ -608,8 +608,8 @@ to go through the intermediate directory.</p>
 </div>
 </div>
 </div>
-</section><section id="full-vs.-relative-paths"><h2 class="section-heading">Full vs. Relative Paths<a class="anchor" aria-label="anchor" href="#full-vs.-relative-paths"></a>
-</h2>
+</section><section><h2 class="section-heading" id="full-vs--relative-paths">Full vs. Relative Paths<a class="anchor" aria-label="anchor" href="#full-vs.-relative-paths"></a>
+<a class="anchor" aria-label="anchor" href="#full-vs--relative-paths"></a></h2>
 <hr class="half-width"><p>The <code>cd</code> command takes an argument which is a directory
 name. Directories can be specified using either a <em>relative</em> path
 or a full <em>absolute</em> path. The directories on the computer are
@@ -777,9 +777,9 @@ file system.</li>
 </ul></div>
 </div>
 </div>
-<!-- 
+<!--
 Place links that you need to refer to multiple times across pages here. Delete
-any links that you are not going to use. 
+any links that you are not going to use.
  -->
 </div>
 </section></div> <!-- / div.lesson-content -->
@@ -794,7 +794,7 @@ any links that you are not going to use.
           Previous: Introducing the
         </a>
         <a class="chapter-link float-end" href="03-working-with-files.html" rel="next">
-          Next: Working with Files... 
+          Next: Working with Files...
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i>
         </a>
       </div>
@@ -805,18 +805,18 @@ any links that you are not going to use.
       		<footer class="row footer mx-md-3"><hr><div class="col-md-6">
         <p>This lesson is subject to the <a href="CODE_OF_CONDUCT.html">Code of Conduct</a></p>
         <p>
-        
+
         <a href="https://github.com/jlchang/2024-06-21-unix-shell-lesson/edit/main/episodes/02-the-filesystem.md" class="external-link">Edit on GitHub</a>
-        
+
 	
         | <a href="https://github.com/jlchang/2024-06-21-unix-shell-lesson/blob/main/CONTRIBUTING.md" class="external-link">Contributing</a>
         | <a href="https://github.com/jlchang/2024-06-21-unix-shell-lesson/" class="external-link">Source</a></p>
 				<p><a href="https://github.com/jlchang/2024-06-21-unix-shell-lesson/blob/main/CITATION" class="external-link">Cite</a> | <a href="mailto:cb-admin@broadinstitute.org">Contact</a> | <a href="https://carpentries.org/about/" class="external-link">About</a></p>
 			</div>
 			<div class="col-md-6">
-        
+
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
-        
+
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
         <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.5" class="external-link">sandpaper (0.16.5)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.6" class="external-link">pegboard (0.7.6)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.3" class="external-link">varnish (1.0.3)</a></p>
 			</div>
@@ -841,7 +841,7 @@ any links that you are not going to use.
   "identifier": "https://jlchang.github.io/2024-06-21-unix-shell-lesson/02-the-filesystem.html",
   "dateCreated": "2024-04-24",
   "dateModified": "2024-06-17",
-  "datePublished": "2024-07-02"
+  "datePublished": "2024-07-09"
 }
 
   </script><script>
